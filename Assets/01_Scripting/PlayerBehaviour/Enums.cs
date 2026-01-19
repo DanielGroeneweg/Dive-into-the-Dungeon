@@ -1,0 +1,1 @@
+public enum Cameras { FirstPerson, ThirdPerson }
