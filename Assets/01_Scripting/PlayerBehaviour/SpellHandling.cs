@@ -69,7 +69,8 @@ public class SpellsHandling : MonoBehaviour
         Spell spell = inventory.Spells[spellIndex];
         HotBarSlider slot = slots[spellIndex];
 
-        if (spell == null || !spell.CanCast || stats.mana < spell.ManaCost) return;
+        if (spell == null) return;
+        if (!spell.CanCast || stats.mana < spell.ManaCost) return;
 
         Debug.Log($"Casting {spell.Name}");
         UpdateStats(spell);
@@ -82,6 +83,20 @@ public class SpellsHandling : MonoBehaviour
     }
     private IEnumerator SpellCooldown(HotBarSlider slot, Spell spell)
     {
+        spell.CanCast = false;
+        if (spell.Cooldown == 0)
+        {
+            slot.slider.maxValue = 1;
+            slot.slider.value = 1;
+
+            yield return null;
+
+            slot.slider.value = 0;
+
+            spell.CanCast = true;
+            yield break;
+        }
+
         slot.slider.maxValue = spell.Cooldown;
         slot.slider.value = spell.Cooldown;
         while (slot.slider.value > 0)

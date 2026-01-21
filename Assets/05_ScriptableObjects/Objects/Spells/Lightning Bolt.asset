@@ -15,6 +15,6 @@ MonoBehaviour:
   spellName: Lightning Bolt
   icon: {fileID: -1058643996, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
   manaCost: 25
-  cooldown: 3
+  cooldown: 0
   itemID: ab8bfd5e-4cd1-40a9-8cd1-57524906d934
   CanCast: 1

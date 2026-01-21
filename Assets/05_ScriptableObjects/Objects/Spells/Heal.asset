@@ -15,6 +15,6 @@ MonoBehaviour:
   spellName: Heal
   icon: {fileID: -2080788876, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
   manaCost: 10
-  cooldown: 10
+  cooldown: 1.5
   itemID: ec64e181-b70d-4f61-8483-cd29d30af62d
   CanCast: 1
