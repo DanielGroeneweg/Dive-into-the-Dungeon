@@ -27,8 +27,6 @@ public class HotBarTester : MonoBehaviour
         if (!context.performed)
             return;
 
-        Debug.Log("Casting!");
-
         if (context.control is UnityEngine.InputSystem.Controls.KeyControl key)
         {
             int spellIndex = key.keyCode switch

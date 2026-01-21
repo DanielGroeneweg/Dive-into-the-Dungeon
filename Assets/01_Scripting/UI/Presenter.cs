@@ -2,5 +2,5 @@ using UnityEngine;
 
 public abstract class Presenter : MonoBehaviour
 {
-    public abstract void SetFillAmount(float minValue, float maxValue, float currentValue);
+    public abstract void SetValue(float minValue, float maxValue, float currentValue);
 }

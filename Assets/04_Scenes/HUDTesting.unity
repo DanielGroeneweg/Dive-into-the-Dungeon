@@ -1250,7 +1250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &346696978
 Transform:
   m_ObjectHideFlags: 0
@@ -2375,7 +2375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &760742224
 Transform:
   m_ObjectHideFlags: 0
@@ -4531,6 +4531,142 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &1409504580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1409504581}
+  - component: {fileID: 1409504582}
+  - component: {fileID: 1409504583}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1409504581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409504580}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1409504582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409504580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d14d022f4f3a24cad6d5b9fd412286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  stats: {fileID: 11400000, guid: 2c84154fd97969f44b14d78f094513f8, type: 2}
+  inventory: {fileID: 11400000, guid: a01357abbf779eb42aa3637c45f63c8b, type: 2}
+  input: {fileID: 0}
+  statDisplay: {fileID: 1628624454}
+  slots:
+  - sliderImage: {fileID: 1762913547}
+    backgroundImage: {fileID: 419693904}
+    slider: {fileID: 1042023585}
+  - sliderImage: {fileID: 1867513129}
+    backgroundImage: {fileID: 1665289390}
+    slider: {fileID: 1751525464}
+  - sliderImage: {fileID: 39610897}
+    backgroundImage: {fileID: 2105027675}
+    slider: {fileID: 1684497088}
+  - sliderImage: {fileID: 963170869}
+    backgroundImage: {fileID: 1452796504}
+    slider: {fileID: 917659691}
+  - sliderImage: {fileID: 64882473}
+    backgroundImage: {fileID: 1456923732}
+    slider: {fileID: 1517950114}
+  - sliderImage: {fileID: 55751632}
+    backgroundImage: {fileID: 546911327}
+    slider: {fileID: 334785199}
+  - sliderImage: {fileID: 767281525}
+    backgroundImage: {fileID: 1066802238}
+    slider: {fileID: 1778841186}
+  - sliderImage: {fileID: 758684989}
+    backgroundImage: {fileID: 2146555480}
+    slider: {fileID: 1792060648}
+--- !u!114 &1409504583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409504580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: ca3d027fd220ff543ac221a901836bc8, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1409504582}
+        m_TargetAssemblyTypeName: SpellsHandling, Assembly-CSharp
+        m_MethodName: OnCastSpell
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 282d68df-4228-4027-b690-dbadc2546f09
+    m_ActionName: 'GamePlay/CastSpell[/Keyboard/1,/Keyboard/2,/Keyboard/3,/Keyboard/4,/Keyboard/5,/Keyboard/6,/Keyboard/7,/Keyboard/8]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1409504582}
+        m_TargetAssemblyTypeName: SpellsHandling, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9bc3b4f4-ae0f-4e0c-9d44-16ba72c0e25b
+    m_ActionName: 'GamePlay/RegainMana[/Keyboard/space]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: GamePlay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1452796502
 GameObject:
   m_ObjectHideFlags: 0
@@ -5007,6 +5143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1628624453}
+  - component: {fileID: 1628624454}
   m_Layer: 5
   m_Name: StatDisplay
   m_TagString: Untagged
@@ -5040,6 +5177,26 @@ RectTransform:
   m_AnchoredPosition: {x: 25, y: -25}
   m_SizeDelta: {x: 267, y: 100}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &1628624454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628624452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260f98fd427e7664c99e39b8658c5674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsDisplay
+  hpPresenters:
+  - {fileID: 1756069055}
+  - {fileID: 571875902}
+  manaPresenters:
+  - {fileID: 918573594}
+  - {fileID: 195425590}
+  xpPresenters:
+  - {fileID: 1525133468}
 --- !u!1 &1657745410
 GameObject:
   m_ObjectHideFlags: 0
@@ -6376,3 +6533,4 @@ SceneRoots:
   - {fileID: 102372552}
   - {fileID: 346696978}
   - {fileID: 760742224}
+  - {fileID: 1409504581}

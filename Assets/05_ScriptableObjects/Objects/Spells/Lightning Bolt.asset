@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64ca7071477457d4fb29391dc807d400, type: 3}
+  m_Name: Lightning Bolt
+  m_EditorClassIdentifier: Assembly-CSharp::Spell
+  spellName: Lightning Bolt
+  icon: {fileID: -1058643996, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
+  manaCost: 25
+  cooldown: 3
+  itemID: ab8bfd5e-4cd1-40a9-8cd1-57524906d934
+  CanCast: 1

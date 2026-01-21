@@ -9,7 +9,7 @@ public class BarPresenter : Presenter
     [SerializeField] private float fillMax;
     [SerializeField] private RectTransform bar;
 
-    public override void SetFillAmount(float minValue, float maxValue, float currentValue)
+    public override void SetValue(float minValue, float maxValue, float currentValue)
     {
         Vector2 trans = bar.sizeDelta;
 

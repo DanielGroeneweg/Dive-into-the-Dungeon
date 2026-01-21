@@ -25,17 +25,17 @@ public class DisplayTester : MonoBehaviour
     {
         foreach (Presenter presenter in healthPresenters)
         {
-            if (presenter != null) presenter.SetFillAmount(hpMin, hpMax, hp);
+            if (presenter != null) presenter.SetValue(hpMin, hpMax, hp);
         }
 
         foreach (Presenter presenter in manaPresenters)
         {
-            if (presenter != null) presenter.SetFillAmount(manaMin, manaMax, mana);
+            if (presenter != null) presenter.SetValue(manaMin, manaMax, mana);
         }
 
         foreach (Presenter presenter in xpPresenters)
         {
-            if (presenter != null) presenter.SetFillAmount(xpMin, xpMax, xp);
+            if (presenter != null) presenter.SetValue(xpMin, xpMax, xp);
         }
     }
 
@@ -47,17 +47,17 @@ public class DisplayTester : MonoBehaviour
 
         foreach (Presenter presenter in healthPresenters)
         {
-            if (presenter != null) presenter.SetFillAmount(hpMin, hpMax, hp);
+            if (presenter != null) presenter.SetValue(hpMin, hpMax, hp);
         }
 
         foreach (Presenter presenter in manaPresenters)
         {
-            if (presenter != null) presenter.SetFillAmount(manaMin, manaMax, mana);
+            if (presenter != null) presenter.SetValue(manaMin, manaMax, mana);
         }
 
         foreach (Presenter presenter in xpPresenters)
         {
-            if (presenter != null) presenter.SetFillAmount(xpMin, xpMax, xp);
+            if (presenter != null) presenter.SetValue(xpMin, xpMax, xp);
         }
     }
     public void OnAttack(InputValue value)
@@ -68,17 +68,17 @@ public class DisplayTester : MonoBehaviour
 
         foreach (Presenter presenter in healthPresenters)
         {
-            if (presenter != null) presenter.SetFillAmount(hpMin, hpMax, hp);
+            if (presenter != null) presenter.SetValue(hpMin, hpMax, hp);
         }
 
         foreach (Presenter presenter in manaPresenters)
         {
-            if (presenter != null) presenter.SetFillAmount(manaMin, manaMax, mana);
+            if (presenter != null) presenter.SetValue(manaMin, manaMax, mana);
         }
 
         foreach (Presenter presenter in xpPresenters)
         {
-            if (presenter != null) presenter.SetFillAmount(xpMin, xpMax, xp);
+            if (presenter != null) presenter.SetValue(xpMin, xpMax, xp);
         }
     }
 }
