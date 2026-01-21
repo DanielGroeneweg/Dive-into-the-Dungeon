@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f19c5a89ba5d314bbb4814ea163c3f5, type: 3}
+  m_Name: PlayerSaveData
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSaveData
+  data:
+    skinColor: {r: 0.8523639, g: 0.8523639, b: 0.8523639, a: 1}
+    hairColor: {r: 0, g: 1, b: 1, a: 1}
+    eyeColor: {r: 0.99781835, g: 0, b: 0.00009991734, a: 1}

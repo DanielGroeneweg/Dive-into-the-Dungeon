@@ -6,9 +6,11 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private Animator animator;
     private void Update()
     {
-
+        if (Grounded() && animator.GetCurrentAnimatorStateInfo(0).IsName("Falling")) animator.Play("Idle");
+        else if (!Grounded()) animator.Play("Falling");
     }
 
     private void FixedUpdate()
@@ -52,9 +54,9 @@ public class PlayerController : MonoBehaviour
     {
         movement = input.Get<Vector2>();
     }
-    public void OnJump(InputValue input)
+    public void OnRoll(InputValue input)
     {
-        if (Grounded()) Jumping();
+        animator.Play("Rolling");
     }
     #endregion
 
