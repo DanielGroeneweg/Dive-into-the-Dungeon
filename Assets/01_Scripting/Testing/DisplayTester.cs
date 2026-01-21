@@ -39,7 +39,7 @@ public class DisplayTester : MonoBehaviour
         }
     }
 
-    public void OnJump(InputValue value)
+    public void OnRoll(InputValue value)
     {
         hp = Mathf.Clamp(hp + 10, hpMin, hpMax);
         mana = Mathf.Clamp(mana + 10, manaMin, manaMax);
