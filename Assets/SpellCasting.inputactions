@@ -1,0 +1,115 @@
+{
+    "version": 1,
+    "name": "SpellCasting",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "4b7c3ddc-99ac-4ff4-9179-00838a84b1f7",
+            "actions": [
+                {
+                    "name": "OpenWheel",
+                    "type": "Button",
+                    "id": "66ff1b8e-bb4c-4bc8-8a66-bdcbc4a047b8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CloseWheel",
+                    "type": "Button",
+                    "id": "4e48bc2f-9195-46db-9e6c-df14e2b3930a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CastSpell",
+                    "type": "Button",
+                    "id": "a543f214-bfe4-40f8-83a5-5ba2f27d4a59",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenSpellBook",
+                    "type": "Button",
+                    "id": "5ebacaa3-7123-4bd9-bd33-57a0232b26b4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CloseSpellBook",
+                    "type": "Button",
+                    "id": "bd345b8d-ee5a-495c-b3a8-e08370daf80e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9a1b5c14-3ec1-4216-9efd-c3f991275271",
+                    "path": "<Keyboard>/#(R)",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenWheel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "737803aa-08bc-4a49-a09f-78be5d35a172",
+                    "path": "<Keyboard>/#(R)",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CloseWheel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e8366c59-154e-496e-bd5d-83dbf47777e0",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CastSpell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3245f8e1-93cb-4add-ae8b-7ca62c5dc522",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenSpellBook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d24346e8-f921-44e6-aeca-be5f5efd3b2d",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CloseSpellBook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

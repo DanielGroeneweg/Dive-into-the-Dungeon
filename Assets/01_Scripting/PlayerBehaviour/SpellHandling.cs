@@ -64,8 +64,10 @@ public class SpellsHandling : MonoBehaviour
                 CastSpell(spellIndex);
         }
     }
+    
     private void CastSpell(int spellIndex)
     {
+        /*
         Spell spell = inventory.Spells[spellIndex];
         HotBarSlider slot = slots[spellIndex];
 
@@ -75,11 +77,14 @@ public class SpellsHandling : MonoBehaviour
         Debug.Log($"Casting {spell.Name}");
         UpdateStats(spell);
         StartCoroutine(SpellCooldown(slot, spell));
+        */
     }
     private void UpdateStats(Spell spell)
     {
+        /*
         stats.mana -= spell.ManaCost;
         statDisplay.UpdateMana(0, stats.maxMana, stats.mana);
+        */
     }
     private IEnumerator SpellCooldown(HotBarSlider slot, Spell spell)
     {
@@ -107,15 +112,4 @@ public class SpellsHandling : MonoBehaviour
 
         spell.CanCast = true;
     }
-#if UNITY_EDITOR
-    public void OnAttack(InputAction.CallbackContext context)
-    {
-        if (!context.performed)
-            return;
-
-        stats.mana = Mathf.Clamp(stats.mana + 10, 0, stats.maxMana);
-
-        statDisplay.UpdateMana(0, stats.maxMana, stats.mana);
-    }
-#endif
 }

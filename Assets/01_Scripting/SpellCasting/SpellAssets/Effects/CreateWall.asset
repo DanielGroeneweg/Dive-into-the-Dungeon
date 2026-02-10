@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7b226c1b0d3714c89ebec334dc4992, type: 3}
+  m_Name: CreateWall
+  m_EditorClassIdentifier: Assembly-CSharp::CreateWallEffect
+  icon: {fileID: 353015944, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
+  stats:
+    manaCost: 5
+    damage: 0
+    duration: 5
+    areaSize: 1
+  allowedFollowUps:
+  - {fileID: 11400000, guid: 94c2e8c4329624e4db42b3457443b117, type: 2}
+  - {fileID: 11400000, guid: 26d02dbd42cf07d428851f24ec3bf274, type: 2}
+  - {fileID: 11400000, guid: fe01a38d70483aa4d97ce0de5905f6d4, type: 2}
+  wallPrefab: {fileID: 6506878925143546622, guid: 2c9aaaa12f5d56b4fb13ae74d348235b, type: 3}
