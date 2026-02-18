@@ -7,5 +7,6 @@ public class ProjectileForm : SpellForm
     {
         SpellProjectile projectile = Instantiate(prefab, Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.rotation);
         projectile.context = context;
+        projectile.StartCountdown();
     }
 }

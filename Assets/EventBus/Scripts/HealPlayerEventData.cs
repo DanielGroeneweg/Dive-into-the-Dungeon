@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HealPlayerEventData
+public class HealPlayerEventData : GameEventData
 {
     public float healing { get; private set; }
     public bool isOverTime { get; private set; }
@@ -15,5 +15,4 @@ public class HealPlayerEventData
         this.hasInitialBurst = hasInitialBurst;
         this.initialBurst = initialBurst;
     }
-
 }

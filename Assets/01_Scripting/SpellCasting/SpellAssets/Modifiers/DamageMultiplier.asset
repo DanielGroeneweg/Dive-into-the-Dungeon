@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42273bea433e9594a931ede5d12b0344, type: 3}
   m_Name: DamageMultiplier
   m_EditorClassIdentifier: Assembly-CSharp::DamageMultiplierModifier
+  componentName: Damage Increase
   icon: {fileID: -1311433528, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
+  description: Increases the damage dealt by the effect.
   multiplier: 1.5

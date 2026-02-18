@@ -6,7 +6,6 @@ public class TargetSelfForm : SpellForm
     {
         context.target = context.caster;
         context.spellPosition = context.caster.transform.position;
-        context.spellRotation.y -= 1f;
         context.spellRotation = Camera.main.transform.rotation;
 
         foreach (ModifiedEffect effect in context.effects)

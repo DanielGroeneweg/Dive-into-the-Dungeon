@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58952bb69bf28c4eb63d42a5b69cf04, type: 3}
   m_Name: DurationMultiplier
   m_EditorClassIdentifier: Assembly-CSharp::DurationMultiplierModifier
+  componentName: Duration increase
   icon: {fileID: 1377828800, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
+  description: Increases the duration of the effect.
   multiplier: 1.5

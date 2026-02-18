@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f615337582223947b6ff9404d848003, type: 3}
   m_Name: Projectile
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileForm
+  componentName: Projectile
   icon: {fileID: -563243200, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
+  description: Shoots a projectile. Effects will be applied where the projectile
+    hits.
   allowedFollowUps:
   - {fileID: 11400000, guid: b8c60cde592db98409c63b84e4fb6316, type: 2}
   - {fileID: 11400000, guid: fe01a38d70483aa4d97ce0de5905f6d4, type: 2}
+  - {fileID: 11400000, guid: 8d5dbe685c5b33f448421d5b420d25f8, type: 2}
+  - {fileID: 11400000, guid: ad8b2905d058cb246a5f431923190f79, type: 2}
   prefab: {fileID: 6108128456150436137, guid: b49fda49288de8a44ab62e83f699ba65, type: 3}

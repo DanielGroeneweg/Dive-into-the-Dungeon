@@ -16,15 +16,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "CloseWheel",
-                    "type": "Button",
-                    "id": "4e48bc2f-9195-46db-9e6c-df14e2b3930a",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "CastSpell",
                     "type": "Button",
                     "id": "a543f214-bfe4-40f8-83a5-5ba2f27d4a59",
@@ -56,22 +47,11 @@
                 {
                     "name": "",
                     "id": "9a1b5c14-3ec1-4216-9efd-c3f991275271",
-                    "path": "<Keyboard>/#(R)",
-                    "interactions": "Press",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "OpenWheel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "737803aa-08bc-4a49-a09f-78be5d35a172",
-                    "path": "<Keyboard>/#(R)",
-                    "interactions": "Press(behavior=1)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "CloseWheel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 public class CraftManager : MonoBehaviour
 {
     [Tooltip("The Slot of the spell")]
@@ -15,7 +16,20 @@ public class CraftManager : MonoBehaviour
     [SerializeField] private List<SpellComponentButton> components = new List<SpellComponentButton>();
 
     [SerializeField] private SpellSlot selected;
+    [SerializeField] private TMP_Text componentNameLabel;
+    [SerializeField] private TMP_Text componentDescription;
+    [Serializable] private class PlaceHolderSpell
+    {
+        public SpellForm form;
+        public SpellComponent[] components = new SpellComponent[9];
+    }
+    [SerializeField] private PlaceHolderSpell placeHolderSpell;
     private int selectedComponentIndex;
+    public void DisplayComponentInfo(SpellComponent component)
+    {
+        componentNameLabel.text = component.ComponentName;
+        componentDescription.text = component.Description;
+    }
     /// <summary>
     /// Attempt to craft the spell, if it's invalid, clear
     /// </summary>
@@ -23,14 +37,16 @@ public class CraftManager : MonoBehaviour
     {
         bool isValid = true;
 
-        if (selected.spell.form == null) isValid = false;
+        if (placeHolderSpell.form == null) isValid = false;
 
         else
         {
-            SpellComponent lastComponent = selected.spell.form;
+            SpellComponent lastComponent = placeHolderSpell.form;
 
-            foreach (SpellComponent component in selected.spell.components)
+            foreach (SpellComponent component in placeHolderSpell.components)
             {
+                if (component == null) continue;
+
                 if (lastComponent is SpellForm form)
                 {
                     if (!form.allowedFollowUps.Contains(component))
@@ -56,8 +72,21 @@ public class CraftManager : MonoBehaviour
             }
         }
 
-        if (!isValid) Clear();
+        if (!isValid) ClearPlaceholderSpell();
+
+        else
+        {
+            selected.spell.form = placeHolderSpell.form;
+            for (int i = 0; i < placeHolderSpell.components.Length; i++)
+            {
+                SpellComponent component = placeHolderSpell.components[i];
+                selected.spell.components[i] = component == null ? null : component;
+            }
+        }
     }
+    /// <summary>
+    /// Clears all component slots of the currently selected spell
+    /// </summary>
     public void Clear()
     {
         foreach(Image image in componentSlots)
@@ -71,6 +100,28 @@ public class CraftManager : MonoBehaviour
         }
 
         selected.spell.form = null;
+        selectedComponentIndex = 0;
+        ClearPlaceholderSpell();
+    }
+    /// <summary>
+    /// Clears only the placeholder spell
+    /// </summary>
+    private void ClearPlaceholderSpell()
+    {
+        placeHolderSpell.form = null;
+        foreach (Image image in componentSlots)
+        {
+            image.sprite = null;
+        }
+
+        for (int i = 0; i < placeHolderSpell.components.Length; i++)
+        {
+            placeHolderSpell.components[i] = null;
+        }
+
+        selectedComponentIndex = 0;
+
+        DisableDisallowedComponents();
     }
     /// <summary>
     /// Sets the given spell as the spell being edited
@@ -88,19 +139,38 @@ public class CraftManager : MonoBehaviour
 
         // Show Icons
         {
-            if (selected.spell.form != null) componentSlots[0].sprite = selected.spell.form.Icon;
-            else componentSlots[0].sprite = null;
+            if (selected.spell.form != null)
+            {
+                componentSlots[0].sprite = selected.spell.form.Icon;
+                placeHolderSpell.form = selected.spell.form;
+            }
+            else
+            {
+                componentSlots[0].sprite = null;
+                placeHolderSpell.form = null;
+            }
 
-                for (int i = 0; i < selected.spell.components.Length; i++)
+            for (int i = 0; i < selected.spell.components.Length; i++)
+            {
+                if (selected.spell.components[i] != null)
                 {
-                    if (selected.spell.components[i] != null) componentSlots[i + 1].sprite = selected.spell.components[i].Icon;
-                    else componentSlots[i + 1].sprite = null;
+                    componentSlots[i + 1].sprite = selected.spell.components[i].Icon;
+                    placeHolderSpell.components[i] = selected.spell.components[i];
                 }
+                else
+                {
+                    componentSlots[i + 1].sprite = null;
+                    placeHolderSpell.components[i] = null;
+                }
+            }
         }
 
         FindComponentSlot();
 
         DisableDisallowedComponents();
+
+        componentNameLabel.text = string.Empty;
+        componentDescription.text = string.Empty;
     }
     /// <summary>
     /// Adds a SpellComponent to the spell that is currently being edited, does nothing if all slots are filled up
@@ -110,9 +180,9 @@ public class CraftManager : MonoBehaviour
     {
         if (selectedComponentIndex >= componentSlots.Length) return;
 
-        if (selectedComponentIndex == 0) selected.spell.form = (SpellForm)component;
+        if (selectedComponentIndex == 0) placeHolderSpell.form = (SpellForm)component;
 
-        else selected.spell.components[selectedComponentIndex - 1] = component;
+        else placeHolderSpell.components[selectedComponentIndex - 1] = component;
 
         componentSlots[selectedComponentIndex].sprite = component.Icon;
 
@@ -126,13 +196,28 @@ public class CraftManager : MonoBehaviour
     /// <param name="index"></param>
     public void RemoveComponent(int index)
     {
-        if (index == 0) selected.spell.form = null;
+        if (index == 0)
+        {
+            placeHolderSpell.form = null;
+        }
 
-        else selected.spell.components[index - 1] = null;
+        else
+        {
+            if (placeHolderSpell.components[index - 1] == null)
+            {
+                FindComponentSlot();
+                DisableDisallowedComponents();
+                return;
+            }
+
+            placeHolderSpell.components[index - 1] = null;
+        }
 
         selectedComponentIndex = index;
 
         componentSlots[index].sprite = null;
+
+        FindComponentSlot();
 
         DisableDisallowedComponents();
     }
@@ -151,26 +236,31 @@ public class CraftManager : MonoBehaviour
     public void SetSpellName(string name)
     {
         selected.spell.SetName(name);
+        Cursor.lockState = CursorLockMode.None;
     }
     private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.None;
         SelectSpell(spellSlots[0]);
     }
+    private void OnDisable()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     /// <summary>
     /// Finds and selects the first component slot that is not filled in
     /// </summary>
     private void FindComponentSlot()
     {
-        if (selected.spell.form == null)
+        if (placeHolderSpell.form == null)
         {
             selectedComponentIndex = 0;
             return;
         }
 
-        for (int i = 0; i < selected.spell.components.Length; i++)
+        for (int i = 0; i < placeHolderSpell.components.Length; i++)
         {
-            if (selected.spell.components[i] == null)
+            if (placeHolderSpell.components[i] == null)
             {
                 selectedComponentIndex = i + 1;
                 return;
@@ -193,14 +283,20 @@ public class CraftManager : MonoBehaviour
         else
         {
             SpellComponent lastComponent = null;
-            lastComponent = selected.spell.form;
+            lastComponent = placeHolderSpell.form;
 
             for (int i = selectedComponentIndex - 2; i >= 0; i--)
             {
-                if (selected.spell.components[i] == null) break;
+                if (placeHolderSpell.components[i] == null) break;
 
-                if (selected.spell.components[i] is SpellEffect effect) lastComponent = effect;
+                if (placeHolderSpell.components[i] is SpellEffect effect)
+                {
+                    lastComponent = effect;
+                    break;
+                }
             }
+
+            if (lastComponent == null) return;
 
             Debug.Log(lastComponent.name);
 

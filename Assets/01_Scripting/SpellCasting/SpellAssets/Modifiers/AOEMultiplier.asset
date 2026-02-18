@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f76e6b09415428d479ed417aa6f9774c, type: 3}
   m_Name: AOEMultiplier
   m_EditorClassIdentifier: Assembly-CSharp::AOEMultiplierModifier
+  componentName: AOE Increase
   icon: {fileID: 891138652, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
+  description: Increase the Area Of Effect of the effect.
   multiplier: 1.5

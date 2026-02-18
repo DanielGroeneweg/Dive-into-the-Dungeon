@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 public class SpellCaster : MonoBehaviour
 {
     public SpellDefinition currentSpell;
@@ -9,17 +10,23 @@ public class SpellCaster : MonoBehaviour
         // Prevent multiple events from new input system
         if (inputContext.phase != InputActionPhase.Performed) return;
 
-        // Cancel if no hitbox is found
-        Camera cam = Camera.main;
-        if (!Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit))
-            return;
-
         SpellContext context = new SpellContext
         {
-            caster = gameObject,
-            target = hit.collider.gameObject,
-            effects = new List<ModifiedEffect>()
+            target = null,
+            spellPosition = Vector3.zero,
+            spellRotation = Quaternion.identity
         };
+
+        context.caster = gameObject;
+        context.effects = new List<ModifiedEffect>();
+
+        Camera cam = Camera.main;
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit))
+        {
+            context.target = hit.collider.gameObject;
+            context.spellPosition = hit.point;
+            context.spellRotation = Quaternion.LookRotation(hit.normal);
+        }
 
         // Create a list of all effects with their modifiers
         CombineEffectsAndModifiers(context);

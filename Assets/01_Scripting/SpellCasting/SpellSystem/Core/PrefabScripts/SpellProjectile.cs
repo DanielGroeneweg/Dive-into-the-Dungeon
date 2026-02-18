@@ -1,11 +1,13 @@
 using UnityEngine;
+using System.Collections;
 [RequireComponent(typeof(Rigidbody))]
 public class SpellProjectile : MonoBehaviour
 {
     public SpellContext context;
-    public float projectileSpeed = 1f;
-    public float maxSpeed = 10f;
-    public Rigidbody rb;
+    [SerializeField] private float projectileSpeed = 1f;
+    [SerializeField] private float maxSpeed = 10f;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private float lifeTime = 60;
     private void FixedUpdate()
     {
         if (rb.angularVelocity.magnitude < maxSpeed) rb.AddForce(transform.forward * projectileSpeed, ForceMode.VelocityChange);
@@ -17,6 +19,15 @@ public class SpellProjectile : MonoBehaviour
 
         foreach (ModifiedEffect effect in context.effects)
             effect.effect.Execute(effect.stats, context);
+        Destroy(gameObject);
+    }
+    public void StartCountdown()
+    {
+        StartCoroutine(Countdown());
+    }
+    private IEnumerator Countdown()
+    {
+        yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
     }
 }

@@ -55,6 +55,7 @@ MonoBehaviour:
   projectileSpeed: 0.5
   maxSpeed: 0.5
   rb: {fileID: 7484703882217404535}
+  lifeTime: 30
 --- !u!23 &7959744379014882347
 MeshRenderer:
   m_ObjectHideFlags: 0
