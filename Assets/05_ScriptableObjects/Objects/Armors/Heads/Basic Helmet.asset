@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16bdad054e1f69f46af0df7222265714, type: 3}
+  m_Name: Basic Helmet
+  m_EditorClassIdentifier: Assembly-CSharp::Armor
+  itemName: Basic Helmet
+  icon: {fileID: 0}
+  prefab: {fileID: 0}
+  itemID: 5043feb7-cd0c-4160-b8e3-57028b704c02
+  statBonusses: []
+  armorType: 0

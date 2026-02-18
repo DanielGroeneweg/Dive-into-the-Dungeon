@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a4bcac2dbe05d4ba185fc82fe191cf, type: 3}
+  m_Name: DamageAura
+  m_EditorClassIdentifier: Assembly-CSharp::DamageAuraEffect
+  componentName: Damage Aura
+  icon: {fileID: -1447646717, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
+  description: Summons an aura that damages creatures hit.
+  stats:
+    manaCost: 20
+    damage: 5
+    duration: 10
+    areaSize: 1
+    force: 0
+  allowedFollowUps:
+  - {fileID: 11400000, guid: 94c2e8c4329624e4db42b3457443b117, type: 2}
+  - {fileID: 11400000, guid: b8c60cde592db98409c63b84e4fb6316, type: 2}
+  - {fileID: 11400000, guid: 8694e080e21a19443a760a87acfda7f2, type: 2}
+  - {fileID: 11400000, guid: 26d02dbd42cf07d428851f24ec3bf274, type: 2}
+  - {fileID: 11400000, guid: fe01a38d70483aa4d97ce0de5905f6d4, type: 2}
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: ad8b2905d058cb246a5f431923190f79, type: 2}
+  orbDistanceFromCenter: 1.5
+  numberOfOrbs: 6
+  orbMovementSpeed: 100
+  auraPrefab: {fileID: 4885961337495362589, guid: 9ad45f1da6c7b124f927daefc00156e9, type: 3}

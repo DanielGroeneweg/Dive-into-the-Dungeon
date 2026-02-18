@@ -7,11 +7,11 @@ public abstract class MoveBehaviour : MonoBehaviour
     [ShowIf("hasDetectionRange")]
     [SerializeField] protected float detectionRange = 5;
 
-    protected PlayerController player;
+    protected GameObject player;
 
     protected void Start()
     {
-        player = GameObject.Find("Player").GetComponent<PlayerController>();
+        player = GameObject.Find("Player");
     }
 
     protected void FixedUpdate()

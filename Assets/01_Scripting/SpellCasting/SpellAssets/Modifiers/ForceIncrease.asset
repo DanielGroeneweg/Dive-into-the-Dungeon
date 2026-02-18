@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ce49f380589cf949ab6be36e95caba9, type: 3}
+  m_Name: ForceIncrease
+  m_EditorClassIdentifier: Assembly-CSharp::ForceIncreaseModifier
+  componentName: Force Increase
+  icon: {fileID: 1651704924, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
+  description: Increases the force of the effect.
+  multiplier: 1.5

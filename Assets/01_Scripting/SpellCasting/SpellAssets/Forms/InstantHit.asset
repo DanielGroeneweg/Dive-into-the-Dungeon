@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d56df45bced7bf45a458fe778708f89, type: 3}
+  m_Name: InstantHit
+  m_EditorClassIdentifier: Assembly-CSharp::InstantHitForm
+  componentName: Instant Hit
+  icon: {fileID: -1997459167, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
+  description: Spell Targets the point you're looking at. Does nothing if not pointing
+    at anything.
+  allowedFollowUps:
+  - {fileID: 11400000, guid: b8c60cde592db98409c63b84e4fb6316, type: 2}
+  - {fileID: 11400000, guid: fe01a38d70483aa4d97ce0de5905f6d4, type: 2}
+  - {fileID: 11400000, guid: 8d5dbe685c5b33f448421d5b420d25f8, type: 2}
+  - {fileID: 11400000, guid: ad8b2905d058cb246a5f431923190f79, type: 2}
+  particlePrefab: {fileID: 1984747928132514045, guid: 354b1c3a46e55564ba00eaaf4c90da02, type: 3}
