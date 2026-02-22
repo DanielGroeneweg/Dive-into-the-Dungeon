@@ -7,6 +7,5 @@ public class DamageMultiplierModifier : SpellModifier
     public override void ApplyModification(SpellStats stats)
     {
         stats.damage *= multiplier;
-        stats.manaCost *= multiplier;
     }
 }

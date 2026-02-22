@@ -15,11 +15,22 @@ public class SpellDamageAura : MonoBehaviour
     private Vector3 oldTargetPos;
     public void OrbHitCollider(Collider collider)
     {
-        Health health = collider.gameObject.GetComponent<Health>();
-        if (health != null)
+        if (collider.tag == "Player")
         {
-            health.TakeDamage(stats.damage);
-            Debug.Log($"Spell hit {collider.gameObject.name} for {stats.damage} Damage!");
+            DamagePlayerEventData data = new DamagePlayerEventData(stats.damage, context.caster);
+            EventBusManager.instance.DamagePlayerEvent.Raise(data);
+            Debug.Log($"Spell hit {context.target.name} for {stats.damage} Damage!");
+        }
+
+        else
+        {
+
+            Health health = collider.gameObject.GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(stats.damage);
+                Debug.Log($"Spell hit {collider.gameObject.name} for {stats.damage} Damage!");
+            }
         }
     }
     private void LateUpdate()

@@ -1,15 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.GraphicsBuffer;
 public class SpellCaster : MonoBehaviour
 {
     public SpellDefinition currentSpell;
+    [SerializeField] private PlayerStats playerStats;
     public void TryCast(InputAction.CallbackContext inputContext)
     {
         // Prevent multiple events from new input system
         if (inputContext.phase != InputActionPhase.Performed) return;
 
+        // Create spell context
         SpellContext context = new SpellContext
         {
             target = null,
@@ -31,6 +32,16 @@ public class SpellCaster : MonoBehaviour
         // Create a list of all effects with their modifiers
         CombineEffectsAndModifiers(context);
 
+        // Mana cost and checks happen here
+        float manaCost = currentSpell.form.ManaCost;
+        foreach (ModifiedEffect effect in context.effects) manaCost += effect.cost;
+
+        // Do nothing if the player doesn't have enough mana
+        if (!playerStats.HasEnoughMana(manaCost)) return;
+
+        // Invoke mana loss event
+        EventBusManager.instance.LoseManaEvent.Raise(new LoseManaEventData(manaCost));
+
         // Cast the spell
         currentSpell.form.Execute(context);
     }
@@ -43,33 +54,51 @@ public class SpellCaster : MonoBehaviour
     {
         if (currentSpell.components.Length > 0)
         {
+            // Get the first effect of the spell
             SpellEffect first = (SpellEffect)currentSpell.components[0];
+
+            // Do nothing if no effects are attached
             if (first == null) return;
-            ModifiedEffect effect = new ModifiedEffect { effect = first, stats = new SpellStats() };
-            effect.stats.CopyFrom(first.stats);
+
+            // Create a modified effect to add to the context list
+            ModifiedEffect modifiedEffect = new ModifiedEffect { effect = first, stats = new SpellStats() };
+            modifiedEffect.stats.CopyFrom(first.stats);
+
+            // Set mana cost
+            modifiedEffect.cost = first.ManaCost;
 
             for (int i = 1; i < currentSpell.components.Length; i++)
             {
+                // Casting
                 SpellComponent component = currentSpell.components[i];
+
+                // Skip if component is invalid
                 if (component == null) continue;
 
                 if (component is SpellEffect spellEffect)
                 {
                     // Add current effect to context list
-                    context.effects.Add(effect);
+                    context.effects.Add(modifiedEffect);
 
                     // Start creating new effect for context list
-                    effect = new ModifiedEffect { effect = spellEffect, stats = new SpellStats() };
-                    effect.stats.CopyFrom(spellEffect.stats);
+                    modifiedEffect = new ModifiedEffect { effect = spellEffect, stats = new SpellStats() };
+                    modifiedEffect.stats.CopyFrom(spellEffect.stats);
+
+                    // Set mana cost
+                    modifiedEffect.cost = spellEffect.ManaCost;
                 }
 
                 if (component is SpellModifier modifier)
                 {
-                    modifier.ApplyModification(effect.stats);
+                    modifier.ApplyModification(modifiedEffect.stats);
+
+                    // Add mana cost
+                    modifiedEffect.cost += modifier.ManaCost;
                 }
             }
 
-            context.effects.Add(effect);
+            // Add the final effect
+            context.effects.Add(modifiedEffect);
         }
     }
 }

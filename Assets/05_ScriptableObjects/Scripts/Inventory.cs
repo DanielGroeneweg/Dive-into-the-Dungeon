@@ -8,13 +8,22 @@ using System.Collections.Generic;
     public Armor legs;
     public Armor feet;
     public Weapon weapon;
-    public List<Item> hpPotions;
+    public List<Potion> hpPotions;
 }
 [CreateAssetMenu(fileName = "Inventory", menuName = "Scriptable Objects/Inventory")]
 public class Inventory : ScriptableObject
 {
-    [SerializeField] private EquippedItems equippedItems = new EquippedItems();
+    [SerializeField] public EquippedItems equippedItems = new EquippedItems();
     [SerializeField] private List<Item> itemsInInventory = new List<Item>();
-    public EquippedItems EquippedItems => equippedItems;
     public List<Item> ItemsInInventory => itemsInInventory;
+    public void UsePotion()
+    {
+        if (equippedItems.hpPotions.Count > 0)
+        {
+            Potion potion = equippedItems.hpPotions[0];
+            HealPlayerEventData data = new HealPlayerEventData(potion.Healing, potion.IsOverTime, potion.Time, potion.HasInitialBurst, potion.InitialBurst);
+            EventBusManager.instance.HealPlayerEvent.Raise(data);
+            equippedItems.hpPotions.Remove(potion);
+        }
+    }
 }

@@ -4,5 +4,5 @@ using UnityEngine;
 public class Armor : Item
 {
     [SerializeField] private ArmorTypes armorType;
-    public ArmorTypes ArmorTpe => armorType;
+    public ArmorTypes ArmorType => armorType;
 }
