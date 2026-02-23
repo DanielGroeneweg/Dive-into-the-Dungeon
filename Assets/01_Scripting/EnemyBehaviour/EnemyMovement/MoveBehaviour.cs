@@ -6,17 +6,10 @@ public abstract class MoveBehaviour : MonoBehaviour
     [SerializeField] protected bool hasDetectionRange = true;
     [ShowIf("hasDetectionRange")]
     [SerializeField] protected float detectionRange = 5;
-
-    protected GameObject player;
-
-    protected void Start()
+    [SerializeField] private Animator animator;
+    public void DoMovement()
     {
-        player = GameObject.Find("Player");
-    }
-
-    protected void FixedUpdate()
-    {
-        if (player == null)
+        if (Locator.instance.Player == null)
         {
             Debug.LogError($"Player Reference not set for {gameObject.name}");
             return;
@@ -24,14 +17,25 @@ public abstract class MoveBehaviour : MonoBehaviour
 
         if (hasDetectionRange)
         {
-            if ((player.transform.position - transform.position).magnitude <= detectionRange) Move();
+            if ((Locator.instance.Player.transform.position - transform.position).magnitude <= detectionRange)
+            {
+                Move();
+                animator.SetFloat("MoveSpeed", 1);
+            }
+            else StopMoving();
         }
 
         else
         {
             Move();
+            animator.SetFloat("MoveSpeed", 1);
         }
     }
-
+    public void StopMovement()
+    {
+        StopMoving();
+        animator.SetFloat("MoveSpeed", 0);
+    }
     protected abstract void Move();
+    protected abstract void StopMoving();
 }

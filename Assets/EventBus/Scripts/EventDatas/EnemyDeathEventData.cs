@@ -4,8 +4,8 @@ public class EnemyDeathEventData : GameEventData
 {
     public EnemyTypes EnemyType { get; private set; }
     public float XPToGain { get; private set; }
-    public Dictionary<Item, float> ItemDrops { get; private set; }
-    public EnemyDeathEventData(EnemyTypes enemyType, float xp, Dictionary<Item, float> itemDrops)
+    public List<ItemDrop> ItemDrops { get; private set; }
+    public EnemyDeathEventData(EnemyTypes enemyType, float xp, List<ItemDrop> itemDrops)
     {
         EnemyType = enemyType;
         XPToGain = xp;
