@@ -18,7 +18,7 @@ public class SingleMeleeAttack : Attack
     public void PlayerHit()
     {
         DamagePlayerEventData data = new DamagePlayerEventData(damage, gameObject);
-        EventBusManager.instance.DamagePlayerEvent.Raise(data);
+        EventBusManager.Instance.DamagePlayerEvent.Raise(data);
     }
     private IEnumerator EndAttack()
     {

@@ -15,4 +15,5 @@ MonoBehaviour:
   componentName: Damage Increase
   icon: {fileID: -1311433528, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
   description: Increases the damage dealt by the effect.
+  manaCost: 20
   multiplier: 1.5

@@ -22,7 +22,7 @@ public class Inventory : ScriptableObject
         {
             Potion potion = equippedItems.hpPotions[0];
             HealPlayerEventData data = new HealPlayerEventData(potion.Healing, potion.IsOverTime, potion.Time, potion.HasInitialBurst, potion.InitialBurst);
-            EventBusManager.instance.HealPlayerEvent.Raise(data);
+            EventBusManager.Instance.HealPlayerEvent.Raise(data);
             equippedItems.hpPotions.Remove(potion);
         }
     }

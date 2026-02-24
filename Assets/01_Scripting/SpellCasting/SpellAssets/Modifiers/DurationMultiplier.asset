@@ -15,4 +15,5 @@ MonoBehaviour:
   componentName: Duration increase
   icon: {fileID: 1377828800, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
   description: Increases the duration of the effect.
+  manaCost: 30
   multiplier: 1.5

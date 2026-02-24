@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354bdda011b6c6a4c845917b52010a3a, type: 3}
+  m_Name: EventBus
+  m_EditorClassIdentifier: Assembly-CSharp::EventBusManager
+  healPlayerEvent: {fileID: 11400000, guid: 108f310da5a34f9449cefa55951caaab, type: 2}
+  damagePlayerEvent: {fileID: 11400000, guid: c42a8744c6bf56c46b1178ffc8d4f08d, type: 2}
+  enemyDeathEvent: {fileID: 11400000, guid: daacd84b52d49054fbcfa9a2dbf36da4, type: 2}
+  updateStatsEvent: {fileID: 11400000, guid: ce30cdd229e565344b5ed4b6020d7ba4, type: 2}
+  loseManaEvent: {fileID: 11400000, guid: 34faa1575fd89bd42ba75715d2923935, type: 2}
+  gainManaEvent: {fileID: 11400000, guid: 73d416064059f4a4e86768c8f69f8f4e, type: 2}

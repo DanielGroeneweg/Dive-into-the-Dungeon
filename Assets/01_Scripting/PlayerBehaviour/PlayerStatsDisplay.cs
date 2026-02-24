@@ -5,17 +5,18 @@ public class PlayerStatsDisplay : MonoBehaviour
     [SerializeField] private Presenter[] hpPresenters;
     [SerializeField] private Presenter[] manaPresenters;
     [SerializeField] private Presenter[] xpPresenters;
-
-    public void UpdateHP(float minValue, float maxValue, float currentValue)
+    private void OnEnable()
     {
-        foreach (Presenter presenter in hpPresenters) if (presenter != null) presenter.SetValue(minValue, maxValue, currentValue);
+        EventBusManager.Instance.UpdateStatsEvent.Register(UpdateStatDisplay);
     }
-    public void UpdateMana(float minValue, float maxValue, float currentValue)
+    private void OnDisable()
     {
-        foreach (Presenter presenter in manaPresenters) if (presenter != null) presenter.SetValue(minValue, maxValue, currentValue);
+        EventBusManager.Instance.UpdateStatsEvent.Unregister(UpdateStatDisplay);
     }
-    public void UpdateXP(float minValue, float maxValue, float currentValue)
+    public void UpdateStatDisplay(UpdateStatsEventData data)
     {
-        foreach (Presenter presenter in xpPresenters) if (presenter != null) presenter.SetValue(minValue, maxValue, currentValue);
+        foreach (Presenter presenter in hpPresenters) if (presenter != null) presenter.SetValue(0, data.maxHealth, data.currentHealth);
+        foreach (Presenter presenter in manaPresenters) if (presenter != null) presenter.SetValue(0, data.maxMana, data.currentMana);
+        foreach (Presenter presenter in xpPresenters) if (presenter != null) presenter.SetValue(0, data.maxXP, data.currentXP);
     }
 }

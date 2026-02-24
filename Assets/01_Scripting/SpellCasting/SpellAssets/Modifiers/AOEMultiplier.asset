@@ -15,4 +15,5 @@ MonoBehaviour:
   componentName: AOE Increase
   icon: {fileID: 891138652, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
   description: Increase the Area Of Effect of the effect.
+  manaCost: 40
   multiplier: 1.5

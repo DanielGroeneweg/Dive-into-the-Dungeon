@@ -10,10 +10,6 @@ public class ExplodeSelf : Attack
     [SerializeField] private Renderer _renderer;
     [SerializeField] private Color targetColor;
     [SerializeField] private UnityEvent explode;
-    private void Start()
-    {
-        StartCoroutine(ChargeThenExplode());
-    }
     public override void DoAttack()
     {
         StartCoroutine(ChargeThenExplode());
@@ -38,13 +34,11 @@ public class ExplodeSelf : Attack
     private void Explode()
     {
         // Deal Damage
-        /*
         if ((Locator.instance.Player.position - transform.position).magnitude <= radius)
         {
             DamagePlayerEventData data = new DamagePlayerEventData(damage, gameObject);
-            EventBusManager.instance.DamagePlayerEvent.Raise(data);
+            EventBusManager.Instance.DamagePlayerEvent.Raise(data);
         }
-        */
 
         // Summon explosion
         Instantiate(explosion, transform.position, Quaternion.identity);

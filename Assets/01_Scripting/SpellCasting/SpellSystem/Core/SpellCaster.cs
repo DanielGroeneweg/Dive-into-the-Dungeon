@@ -40,7 +40,7 @@ public class SpellCaster : MonoBehaviour
         if (!playerStats.HasEnoughMana(manaCost)) return;
 
         // Invoke mana loss event
-        EventBusManager.instance.LoseManaEvent.Raise(new LoseManaEventData(manaCost));
+        EventBusManager.Instance.LoseManaEvent.Raise(new LoseManaEventData(manaCost));
 
         // Cast the spell
         currentSpell.form.Execute(context);

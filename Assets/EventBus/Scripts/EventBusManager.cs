@@ -1,7 +1,8 @@
 using UnityEngine;
-public class EventBusManager : MonoBehaviour
+[CreateAssetMenu(menuName = "EventBus/EventBus")]
+public class EventBusManager : ScriptableObject
 {
-    public static EventBusManager instance;
+    static EventBusManager instance;
     [SerializeField] private HealPlayerEvent healPlayerEvent;
     [SerializeField] private DamagePlayerEvent damagePlayerEvent;
     [SerializeField] private EnemyDeathEvent enemyDeathEvent;
@@ -14,9 +15,12 @@ public class EventBusManager : MonoBehaviour
     public UpdateStatsEvent UpdateStatsEvent => updateStatsEvent;
     public LoseManaEvent LoseManaEvent => loseManaEvent;
     public GainManaEvent GainManaEvent => gainManaEvent;
-    private void Start()
+    public static EventBusManager Instance
     {
-        if (instance == null) instance = this;
-        else Destroy(gameObject);
+        get
+        {
+            if (instance == null) instance = Resources.Load<EventBusManager>("EventBus");
+            return instance;
+        }
     }
 }

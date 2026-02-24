@@ -7,7 +7,7 @@ public class ForceDamageEffect : SpellEffect
         if (context.target.tag == "Player")
         {
             DamagePlayerEventData data = new DamagePlayerEventData(stats.damage, context.caster);
-            EventBusManager.instance.DamagePlayerEvent.Raise(data);
+            EventBusManager.Instance.DamagePlayerEvent.Raise(data);
             Debug.Log($"Spell hit {context.target.name} for {stats.damage} Damage!");
         }
 

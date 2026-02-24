@@ -18,7 +18,7 @@ public class SpellDamageAura : MonoBehaviour
         if (collider.tag == "Player")
         {
             DamagePlayerEventData data = new DamagePlayerEventData(stats.damage, context.caster);
-            EventBusManager.instance.DamagePlayerEvent.Raise(data);
+            EventBusManager.Instance.DamagePlayerEvent.Raise(data);
             Debug.Log($"Spell hit {context.target.name} for {stats.damage} Damage!");
         }
 

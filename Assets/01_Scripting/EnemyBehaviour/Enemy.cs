@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public void Killenemy()
     {
         EnemyDeathEventData data = new EnemyDeathEventData(enemyType, xpOnDeath, itemDrops);
+        EventBusManager.Instance.EnemyDeathEvent.Raise(data);
     }
     public void RemoveEnemy()
     {
