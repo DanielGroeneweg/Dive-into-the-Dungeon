@@ -6,10 +6,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyTypes enemyType;
     [SerializeField] private float xpOnDeath;
     private EnemySpawner spawner;
-    public void EnemyDeath()
+    public void Killenemy()
     {
         EnemyDeathEventData data = new EnemyDeathEventData(enemyType, xpOnDeath, itemDrops);
-        spawner.RemoveEnemy();
+    }
+    public void RemoveEnemy()
+    {
+        if (spawner != null) spawner.RemoveEnemy();
     }
     public void LinkSpawner(EnemySpawner spawner) { this.spawner = spawner; }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 public class AttackBehaviour : MonoBehaviour
 {
     [SerializeField] private List<Attack> attacks = new();
-    [SerializeField] private Animator animator;
     private bool canAttack;
     public bool CanAttack => canAttack;
     private bool isAttacking;
@@ -21,7 +20,7 @@ public class AttackBehaviour : MonoBehaviour
         if (!isAttacking)
         {
             attacks[index].DoAttack();
-            attacks[index].action = SetAttackingFalse;
+            attacks[index].AttackEndAction = SetAttackingFalse;
         }
         isAttacking = true;
         index = Mathf.Clamp(index + 1, 0, attacks.Count - 1);

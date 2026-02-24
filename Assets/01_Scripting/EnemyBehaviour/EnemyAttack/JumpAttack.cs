@@ -82,14 +82,10 @@ public class JumpAttack : Attack
         }
 
         // Damage player if player is near
-        foreach (Collider collider in Physics.OverlapSphere(transform.position, slamRadius))
+        if ((Locator.instance.Player.position - transform.position).magnitude <= slamRadius)
         {
-            if (collider.tag == "Player")
-            {
-                DamagePlayerEventData data = new DamagePlayerEventData(damage, gameObject);
-                EventBusManager.instance.DamagePlayerEvent.Raise(data);
-                break;
-            }
+            DamagePlayerEventData data = new DamagePlayerEventData(damage, gameObject);
+            EventBusManager.instance.DamagePlayerEvent.Raise(data);
         }
     }
 }

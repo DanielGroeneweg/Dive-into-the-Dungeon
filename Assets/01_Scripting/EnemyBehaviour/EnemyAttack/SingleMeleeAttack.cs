@@ -25,6 +25,6 @@ public class SingleMeleeAttack : Attack
         yield return null;
         yield return new WaitForSeconds(attackAnimation.length);
         foreach (Collider hitbox in hitboxes) hitbox.enabled = false;
-        action.Invoke();
+        AttackEndAction.Invoke();
     }
 }
