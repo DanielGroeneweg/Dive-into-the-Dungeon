@@ -20,7 +20,5 @@ public class ForceDamageEffect : SpellEffect
                 Debug.Log($"Spell hit {context.target.name} for {stats.damage} Damage!");
             }
         }
-
-        Debug.Log("Applied Force Damage Effect!");
     }
 }

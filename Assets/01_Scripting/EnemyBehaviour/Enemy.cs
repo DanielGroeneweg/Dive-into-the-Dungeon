@@ -8,8 +8,16 @@ public class Enemy : MonoBehaviour
     private EnemySpawner spawner;
     public void Killenemy()
     {
-        EnemyDeathEventData data = new EnemyDeathEventData(enemyType, xpOnDeath, itemDrops);
+        EnemyDeathEventData data = new EnemyDeathEventData(enemyType, xpOnDeath);
         EventBusManager.Instance.EnemyDeathEvent.Raise(data);
+
+        foreach(ItemDrop itemDrop in itemDrops)
+        {
+            if (Random.Range(0f,0.99f) >= 1 - itemDrop.dropChance)
+            {
+                if (itemDrop.item != null) EventBusManager.Instance.GetItemEvent.Raise(new GetItemEventData(itemDrop.item));
+            }
+        }
     }
     public void RemoveEnemy()
     {

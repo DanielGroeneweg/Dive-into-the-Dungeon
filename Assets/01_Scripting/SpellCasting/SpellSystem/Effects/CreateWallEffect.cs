@@ -13,7 +13,5 @@ public class CreateWallEffect : SpellEffect
         wall.transform.localScale = size;
 
         wall.StartCountdown(stats.duration);
-
-        Debug.Log("Summoned Wall!");
     }
 }

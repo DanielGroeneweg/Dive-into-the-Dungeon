@@ -18,3 +18,4 @@ MonoBehaviour:
   updateStatsEvent: {fileID: 11400000, guid: ce30cdd229e565344b5ed4b6020d7ba4, type: 2}
   loseManaEvent: {fileID: 11400000, guid: 34faa1575fd89bd42ba75715d2923935, type: 2}
   gainManaEvent: {fileID: 11400000, guid: 73d416064059f4a4e86768c8f69f8f4e, type: 2}
+  getItemEvent: {fileID: 11400000, guid: 6213b0dee51ed2040bcf86b774921002, type: 2}

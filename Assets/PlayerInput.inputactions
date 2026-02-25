@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "name": "SpellCasting",
+    "name": "PlayerInput",
     "maps": [
         {
             "name": "Player",
@@ -119,7 +119,7 @@
                     "name": "",
                     "id": "950d16ec-750e-4748-84b5-b6bfab7be150",
                     "path": "<Keyboard>/q",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "UsePotion",

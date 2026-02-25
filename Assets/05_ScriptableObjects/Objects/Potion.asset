@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Potion
   itemName: Healing Potion
   icon: {fileID: -1311433528, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
-  prefab: {fileID: 0}
   itemID: 19d68554-ecba-4cfe-8043-1cc83e233cbe
   statBonusses: []
-  healing: 0
-  isOverTime: 0
-  time: 0
-  hasInitialBurst: 0
-  initialBurst: 0
+  healing: 25
+  isOverTime: 1
+  time: 10
+  hasInitialBurst: 1
+  initialBurst: 25

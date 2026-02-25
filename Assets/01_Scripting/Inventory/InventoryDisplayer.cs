@@ -6,7 +6,7 @@ public class InventoryDisplayer : MonoBehaviour
     [SerializeField] private Inventory inventory;
     [SerializeField] private ItemDisplayer displayerPrefab;
     [SerializeField] private GridLayoutGroup content;
-    [SerializeField] private InventoryManager inventoryManager;
+    [SerializeField] private InventoryUIManager inventoryManager;
     private List<ItemDisplayer> items = new();
     private void OnEnable()
     {

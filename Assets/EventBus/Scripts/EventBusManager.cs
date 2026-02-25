@@ -9,12 +9,14 @@ public class EventBusManager : ScriptableObject
     [SerializeField] private UpdateStatsEvent updateStatsEvent;
     [SerializeField] private LoseManaEvent loseManaEvent;
     [SerializeField] private GainManaEvent gainManaEvent;
+    [SerializeField] private GetItemEvent getItemEvent;
     public HealPlayerEvent HealPlayerEvent => healPlayerEvent;
     public DamagePlayerEvent DamagePlayerEvent => damagePlayerEvent;
     public EnemyDeathEvent EnemyDeathEvent => enemyDeathEvent;
     public UpdateStatsEvent UpdateStatsEvent => updateStatsEvent;
     public LoseManaEvent LoseManaEvent => loseManaEvent;
     public GainManaEvent GainManaEvent => gainManaEvent;
+    public GetItemEvent GetItemEvent => getItemEvent;
     public static EventBusManager Instance
     {
         get

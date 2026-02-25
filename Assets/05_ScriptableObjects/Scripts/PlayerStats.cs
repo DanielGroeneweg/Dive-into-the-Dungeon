@@ -121,7 +121,11 @@ public class PlayerStats : MonoBehaviour
         UpdateStatsEventData statsData = new UpdateStatsEventData(level, hp, maxhp, mana, maxMana, xp, xpPerLevel);
         EventBusManager.Instance.UpdateStatsEvent.Raise(statsData);
     }
-    public bool HasEnoughMana(float cost) { return mana <= cost; }
+    public bool HasEnoughMana(float cost)
+    {
+        Debug.Log($"Player has {mana} mana and needs {cost} so returning {mana >= cost}");
+        return mana >= cost;
+    }
     #endregion
 
     #region XP
