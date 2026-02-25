@@ -6,6 +6,5 @@ public class DurationMultiplierModifier : SpellModifier
     public override void ApplyModification(SpellStats stats)
     {
         stats.duration *= multiplier;
-        stats.manaCost *= multiplier;
     }
 }

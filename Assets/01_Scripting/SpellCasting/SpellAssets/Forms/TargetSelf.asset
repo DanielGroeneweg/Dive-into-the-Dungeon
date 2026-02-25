@@ -15,6 +15,7 @@ MonoBehaviour:
   componentName: Self
   icon: {fileID: 1142440690, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
   description: Targets the caster if the spell
+  manaCost: 10
   allowedFollowUps:
   - {fileID: 11400000, guid: b8c60cde592db98409c63b84e4fb6316, type: 2}
   - {fileID: 11400000, guid: fe01a38d70483aa4d97ce0de5905f6d4, type: 2}

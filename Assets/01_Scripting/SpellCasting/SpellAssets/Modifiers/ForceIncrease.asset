@@ -15,4 +15,5 @@ MonoBehaviour:
   componentName: Force Increase
   icon: {fileID: 1651704924, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
   description: Increases the force of the effect.
+  manaCost: 20
   multiplier: 1.5

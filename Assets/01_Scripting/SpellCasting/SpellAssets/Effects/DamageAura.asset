@@ -15,8 +15,8 @@ MonoBehaviour:
   componentName: Damage Aura
   icon: {fileID: -1447646717, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
   description: Summons an aura that damages creatures hit.
+  manaCost: 50
   stats:
-    manaCost: 20
     damage: 5
     duration: 10
     areaSize: 1

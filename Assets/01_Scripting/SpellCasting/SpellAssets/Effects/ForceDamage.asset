@@ -15,8 +15,8 @@ MonoBehaviour:
   componentName: Harm
   icon: {fileID: 145943628, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
   description: Damages the target.
+  manaCost: 20
   stats:
-    manaCost: 5
     damage: 10
     duration: 0
     areaSize: 0
