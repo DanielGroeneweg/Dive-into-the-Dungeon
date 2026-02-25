@@ -50,6 +50,10 @@ public class PlayerStats : MonoBehaviour
 
         StartCoroutine(PassiveRegain());
     }
+    /// <summary>
+    /// heals the player and grants the player mana over time
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator PassiveRegain()
     {
         while (true)
@@ -66,12 +70,20 @@ public class PlayerStats : MonoBehaviour
         UpdateStatsEventData statsData = new UpdateStatsEventData(level, hp, maxhp, mana, maxMana, xp, xpPerLevel);
         EventBusManager.Instance.UpdateStatsEvent.Raise(statsData);
     }
+    /// <summary>
+    /// Heals the player
+    /// </summary>
+    /// <param name="health"></param>
     private void Heal(float health)
     {
         hp = Mathf.Clamp(hp + Mathf.Abs(health), 0, maxhp);
         UpdateStatsEventData statsData = new UpdateStatsEventData(level, hp, maxhp, mana, maxMana, xp, xpPerLevel);
         EventBusManager.Instance.UpdateStatsEvent.Raise(statsData);
     }
+    /// <summary>
+    /// Calls the Heal method in a way corresponding to the healing type
+    /// </summary>
+    /// <param name="data"></param>
     private void HealPlayer(HealPlayerEventData data)
     {
         if (data.isOverTime)
@@ -82,6 +94,11 @@ public class PlayerStats : MonoBehaviour
         }
         else Heal(data.healing);
     }
+    /// <summary>
+    /// Heals the player gradually over time
+    /// </summary>
+    /// <param name="data"></param>
+    /// <returns></returns>
     private IEnumerator HealingOverTime(HealPlayerEventData data)
     {
         float healPerSecond = data.healing / data.time;
@@ -121,6 +138,11 @@ public class PlayerStats : MonoBehaviour
         UpdateStatsEventData statsData = new UpdateStatsEventData(level, hp, maxhp, mana, maxMana, xp, xpPerLevel);
         EventBusManager.Instance.UpdateStatsEvent.Raise(statsData);
     }
+    /// <summary>
+    /// Returns whether the player has enough mana for something
+    /// </summary>
+    /// <param name="cost"></param>
+    /// <returns></returns>
     public bool HasEnoughMana(float cost)
     {
         Debug.Log($"Player has {mana} mana and needs {cost} so returning {mana >= cost}");
@@ -149,11 +171,16 @@ public class PlayerStats : MonoBehaviour
         UpdateStatsEventData statsData = new UpdateStatsEventData(level, hp, maxhp, mana, maxMana, xp, xpPerLevel);
         EventBusManager.Instance.UpdateStatsEvent.Raise(statsData);
     }
-    public void UpdateStats(List<StatBonus> statBonusses)
+    #endregion
+    /// <summary>
+    /// Updates the player's stats by combining base stats with stat bonusses from items
+    /// </summary>
+    /// <param name="statBonusses"></param>
+    public void CalculateFinalStats(List<StatBonus> statBonusses)
     {
         maxhp = baseHP;
         maxMana = baseMana;
-        foreach(StatBonus statBonus in statBonusses)
+        foreach (StatBonus statBonus in statBonusses)
         {
             switch (statBonus.stat)
             {
@@ -169,5 +196,4 @@ public class PlayerStats : MonoBehaviour
         UpdateStatsEventData statsData = new UpdateStatsEventData(level, hp, maxhp, mana, maxMana, xp, xpPerLevel);
         EventBusManager.Instance.UpdateStatsEvent.Raise(statsData);
     }
-    #endregion
 }

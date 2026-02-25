@@ -123,7 +123,7 @@ public class InventoryUIManager : MonoBehaviour
         if (inventory.equippedItems.weapon != null)
             foreach (StatBonus bonus in inventory.equippedItems.weapon.StatBonusses) bonusses.Add(bonus);
 
-        playerStats.UpdateStats(bonusses);
+        playerStats.CalculateFinalStats(bonusses);
     }
     private void OnEnable()
     {
