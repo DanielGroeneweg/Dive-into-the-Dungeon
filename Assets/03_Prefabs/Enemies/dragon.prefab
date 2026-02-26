@@ -3128,6 +3128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 913792660781812112}
   - component: {fileID: 3811841516666918769}
+  - component: {fileID: 4837897990921216447}
   - component: {fileID: 3087629437708383391}
   - component: {fileID: 6902185390900758172}
   - component: {fileID: 5695699272729584765}
@@ -3135,7 +3136,6 @@ GameObject:
   - component: {fileID: 2915554873957934154}
   - component: {fileID: 1469331182214136576}
   - component: {fileID: 8945747087263944686}
-  - component: {fileID: 4837897990921216447}
   - component: {fileID: 7492237791319523572}
   m_Layer: 0
   m_Name: dragon
@@ -3183,6 +3183,46 @@ MonoBehaviour:
     dropChance: 1
   enemyType: 1
   xpOnDeath: 1000
+--- !u!114 &4837897990921216447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5734063526815357735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1260ee2044cb2c94bae5b023439bcdb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 1000
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3811841516666918769}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: Killenemy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3811841516666918769}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: RemoveEnemy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3087629437708383391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3313,46 +3353,6 @@ MonoBehaviour:
   chargeTime: 2
   slamTime: 1
   slamRadius: 7.5
---- !u!114 &4837897990921216447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5734063526815357735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1260ee2044cb2c94bae5b023439bcdb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 1000
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3811841516666918769}
-        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-        m_MethodName: Killenemy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3811841516666918769}
-        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-        m_MethodName: RemoveEnemy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!65 &7492237791319523572
 BoxCollider:
   m_ObjectHideFlags: 0
