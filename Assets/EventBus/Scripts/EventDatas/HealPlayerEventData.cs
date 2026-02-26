@@ -5,13 +5,15 @@ public class HealPlayerEventData : GameEventData
     public float healing { get; private set; }
     public bool isOverTime { get; private set; }
     public float time { get; private set; }
+    public float healInterval { get; private set; }
     public bool hasInitialBurst { get; private set; }
     public float initialBurst { get; private set; }
-    public HealPlayerEventData(float healing, bool isOverTime, float time = 0, bool hasInitialBurst = false, float initialBurst = 0)
+    public HealPlayerEventData(float healing, bool isOverTime, float time = 0, float healInterval = 0, bool hasInitialBurst = false, float initialBurst = 0)
     {
         this.healing = healing;
         this.isOverTime = isOverTime;
         this.time = time;
+        this.healInterval = healInterval;
         this.hasInitialBurst = hasInitialBurst;
         this.initialBurst = initialBurst;
     }

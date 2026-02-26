@@ -10,10 +10,17 @@ public class WalkingNavMeshAgent : MoveBehaviour
     }
     protected override void Move()
     {
-        agent.SetDestination(Locator.instance.Player.position);
+        agent.enabled = true;
+        Vector3 destination = Locator.instance.Player.position;
+        destination.y -= 1;
+        agent.SetDestination(destination);
+        agent.isStopped = false;
     }
     protected override void StopMoving()
     {
+        if (!agent.isActiveAndEnabled) return;
+
         agent.isStopped = true;
+        agent.enabled = false;
     }
 }

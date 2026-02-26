@@ -16,7 +16,7 @@ MonoBehaviour:
   icon: {fileID: -1311433528, guid: 3bfe6a48686d5484f88e56cf38002772, type: 3}
   itemID: 19d68554-ecba-4cfe-8043-1cc83e233cbe
   statBonusses: []
-  healing: 25
+  healing: 10
   isOverTime: 1
   time: 10
   hasInitialBurst: 1

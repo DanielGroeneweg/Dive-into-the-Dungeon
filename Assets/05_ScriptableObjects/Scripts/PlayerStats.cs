@@ -104,10 +104,11 @@ public class PlayerStats : MonoBehaviour
         float healPerSecond = data.healing / data.time;
         float healingDone = 0;
         float timePassed = 0;
-        yield return null;
+        yield return new WaitForSeconds(data.healInterval);
+
         while (healingDone < data.healing)
         {
-            timePassed += Time.deltaTime;
+            timePassed += data.healInterval;
             if (timePassed >= data.time)
             {
                 Heal(data.healing - healingDone);
@@ -116,11 +117,11 @@ public class PlayerStats : MonoBehaviour
 
             else
             {
-                Heal(healPerSecond * Time.deltaTime);
-                healingDone += healPerSecond * Time.deltaTime;
+                Heal(healPerSecond * data.healInterval);
+                healingDone += healPerSecond * data.healInterval;
             }
 
-            yield return null;
+            yield return new WaitForSeconds(data.healInterval);
         }
     }
     #endregion

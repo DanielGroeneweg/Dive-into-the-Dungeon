@@ -477,6 +477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7889283714178998015}
   - component: {fileID: 7259408896944651154}
+  - component: {fileID: 3306711495211170061}
   m_Layer: 0
   m_Name: basic_rig L Hand
   m_TagString: Untagged
@@ -524,6 +525,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: -0.05, y: 0, z: 0}
+--- !u!114 &3306711495211170061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372399797010994104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1194607f727de6468c4238c91cc66a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyWeapon
+  attack: {fileID: 524652308793166029}
 --- !u!1 &3555415367657315355
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,6 +555,7 @@ GameObject:
   - component: {fileID: 4207484416904514642}
   - component: {fileID: 934309570994560655}
   - component: {fileID: 7395568021110231077}
+  - component: {fileID: 2245214207744699326}
   m_Layer: 0
   m_Name: FreeZombie
   m_TagString: Untagged
@@ -648,7 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a11e896f5cffc4e9d83a24d934f350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SingleMeleeAttack
-  attackRange: 1
+  attackRange: 1.75
   damage: 10
   animator: {fileID: 7395568021110231077}
   hitboxes:
@@ -680,9 +695,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38915e0c0c0d15049906dd96d6734d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Walking
-  movementSpeed: 10
+  movementSpeed: 3.5
   hasDetectionRange: 1
-  detectionRange: 5
+  detectionRange: 15
   animator: {fileID: 7395568021110231077}
   agent: {fileID: 934309570994560655}
 --- !u!195 &934309570994560655
@@ -729,6 +744,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &2245214207744699326
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3555415367657315355}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &3792538728248206195
 GameObject:
   m_ObjectHideFlags: 0

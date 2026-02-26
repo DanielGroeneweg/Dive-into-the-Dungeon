@@ -737,7 +737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a388dd336a43edc4e980a7152488bc09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplodeSelf
-  attackRange: 1
+  attackRange: 3.5
   damage: 25
   animator: {fileID: 6058980601367168357}
   radius: 5
@@ -772,9 +772,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a16656c6aa5404fb08026f45d71d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlyThroughObjects
-  movementSpeed: 10
+  movementSpeed: 0.075
   hasDetectionRange: 1
-  detectionRange: 5
+  detectionRange: 15
   animator: {fileID: 6058980601367168357}
 --- !u!95 &6058980601367168357
 Animator:

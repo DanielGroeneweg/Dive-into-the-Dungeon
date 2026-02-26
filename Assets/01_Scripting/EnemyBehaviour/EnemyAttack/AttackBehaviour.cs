@@ -21,9 +21,10 @@ public class AttackBehaviour : MonoBehaviour
         {
             attacks[index].DoAttack();
             attacks[index].AttackEndAction = SetAttackingFalse;
+            isAttacking = true;
+            index = index + 1 >= attacks.Count ? 0 : index + 1;
+            Debug.Log(index);
         }
-        isAttacking = true;
-        index = Mathf.Clamp(index + 1, 0, attacks.Count - 1);
     }
     private void SetAttackingFalse() { isAttacking = false; }
 }

@@ -20,6 +20,9 @@ MonoBehaviour:
     weapon: {fileID: 0}
     hpPotions:
     - {fileID: 11400000, guid: e143ab3e2735b7640ad7dcbdaf19bbf4, type: 2}
+    - {fileID: 11400000, guid: e143ab3e2735b7640ad7dcbdaf19bbf4, type: 2}
+    - {fileID: 11400000, guid: e143ab3e2735b7640ad7dcbdaf19bbf4, type: 2}
+    - {fileID: 11400000, guid: e143ab3e2735b7640ad7dcbdaf19bbf4, type: 2}
   itemsInInventory:
   - {fileID: 11400000, guid: c1d12356f97d25345ba0ff2b3f50c8b2, type: 2}
   - {fileID: 11400000, guid: 1b7bba70481a0dd4788e479fbd6d454e, type: 2}

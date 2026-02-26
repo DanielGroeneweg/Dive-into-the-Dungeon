@@ -87,5 +87,11 @@ public class JumpAttack : Attack
             DamagePlayerEventData data = new DamagePlayerEventData(damage, gameObject);
             EventBusManager.Instance.DamagePlayerEvent.Raise(data);
         }
+
+        EndAttack();
+    }
+    private void EndAttack()
+    {
+        AttackEndAction.Invoke();
     }
 }

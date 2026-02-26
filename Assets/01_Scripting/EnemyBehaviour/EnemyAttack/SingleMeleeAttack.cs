@@ -11,6 +11,10 @@ public class SingleMeleeAttack : Attack
     }
     public override void DoAttack()
     {
+        Vector3 target = Locator.instance.Player.position;
+        target.y = transform.position.y;
+        transform.LookAt(target);
+
         animator.SetTrigger("Attack");
         foreach (Collider hitbox in hitboxes) hitbox.enabled = true;
         StartCoroutine(EndAttack());
