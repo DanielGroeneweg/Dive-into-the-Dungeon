@@ -14,6 +14,7 @@ public class SpellComponentDataBase : ScriptableObject
         {
             if (!components.ContainsKey(component.SpellComponentID)) components.Add(component.SpellComponentID, component);
         }
+        UnityEditor.EditorUtility.SetDirty(this);
     }
 #endif
 }

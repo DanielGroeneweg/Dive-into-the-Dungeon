@@ -21,6 +21,7 @@ public class ItemDataBase : ScriptableObject
         {
             if (!weaponDic.ContainsKey(weapon.ItemID)) weaponDic.Add(weapon.ItemID, weapon);
         }
+        UnityEditor.EditorUtility.SetDirty(this);
     }
 #endif
 }
