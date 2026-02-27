@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88362bf0216db1c40b6d56993a98e647, type: 3}
+  m_Name: ItemDataBase
+  m_EditorClassIdentifier: Assembly-CSharp::ItemDataBase
+  armors:
+  - {fileID: 11400000, guid: d1559f64d98d99d49875334fd9d660f8, type: 2}
+  - {fileID: 11400000, guid: c1d12356f97d25345ba0ff2b3f50c8b2, type: 2}
+  - {fileID: 11400000, guid: 1b7bba70481a0dd4788e479fbd6d454e, type: 2}
+  - {fileID: 11400000, guid: f3b36b754b62e4b45b30bec63c6ade7e, type: 2}
+  weapons:
+  - {fileID: 11400000, guid: 7968bee96b27f614a99569f78211fa3c, type: 2}

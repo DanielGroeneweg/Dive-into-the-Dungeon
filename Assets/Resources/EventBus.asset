@@ -20,3 +20,4 @@ MonoBehaviour:
   gainManaEvent: {fileID: 11400000, guid: 73d416064059f4a4e86768c8f69f8f4e, type: 2}
   getItemEvent: {fileID: 11400000, guid: 6213b0dee51ed2040bcf86b774921002, type: 2}
   equipWeaponEvent: {fileID: 11400000, guid: 28a376f3648a3f14eb987ac0d16f72f4, type: 2}
+  gameOverEvent: {fileID: 11400000, guid: 27a0de538e45d9e4188dadebafe68dda, type: 2}

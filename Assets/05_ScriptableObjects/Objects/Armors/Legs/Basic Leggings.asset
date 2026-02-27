@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Basic Leggings
   m_EditorClassIdentifier: Assembly-CSharp::Armor
   itemName: Basic Leggings
-  icon: {fileID: 0}
-  prefab: {fileID: 0}
+  icon: {fileID: 21300000, guid: b8fb302c5768e334ca82005f50e58121, type: 3}
   itemID: e79281a0-a9b9-4e7e-ad59-a4f9f0a2a5b0
   statBonusses: []
-  armorType: 0
+  armorType: 2

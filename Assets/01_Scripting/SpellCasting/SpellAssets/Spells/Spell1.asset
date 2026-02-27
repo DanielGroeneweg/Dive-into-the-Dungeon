@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Spell1
   m_EditorClassIdentifier: Assembly-CSharp::SpellDefinition
   spellName: Instant Death
-  form: {fileID: 11400000, guid: 75176ce026eaee948aa2909d766978fb, type: 2}
   components:
+  - {fileID: 11400000, guid: 75176ce026eaee948aa2909d766978fb, type: 2}
   - {fileID: 11400000, guid: fe01a38d70483aa4d97ce0de5905f6d4, type: 2}
   - {fileID: 11400000, guid: 8694e080e21a19443a760a87acfda7f2, type: 2}
   - {fileID: 11400000, guid: 8694e080e21a19443a760a87acfda7f2, type: 2}

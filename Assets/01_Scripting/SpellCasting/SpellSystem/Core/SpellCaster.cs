@@ -33,7 +33,7 @@ public class SpellCaster : MonoBehaviour
         CombineEffectsAndModifiers(context);
 
         // Mana cost and checks happen here
-        float manaCost = currentSpell.form.ManaCost;
+        float manaCost = currentSpell.components[0].ManaCost;
         foreach (ModifiedEffect effect in context.effects) manaCost += effect.cost;
 
         // Do nothing if the player doesn't have enough mana
@@ -43,7 +43,7 @@ public class SpellCaster : MonoBehaviour
         EventBusManager.Instance.LoseManaEvent.Raise(new LoseManaEventData(manaCost));
 
         // Cast the spell
-        currentSpell.form.Execute(context);
+        if (currentSpell.components[0] is SpellForm form) form.Execute(context);
     }
     /// <summary>
     /// Combines All effects and modifiers into a list of 'modified effects'. Each modifier is applied to the last found effect

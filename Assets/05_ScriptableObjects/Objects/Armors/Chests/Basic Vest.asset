@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Basic Vest
   m_EditorClassIdentifier: Assembly-CSharp::Armor
   itemName: Basic Vest
-  icon: {fileID: 0}
-  prefab: {fileID: 0}
+  icon: {fileID: 21300000, guid: 2f1eaeeaad36ee5469eff7ff158f37ba, type: 3}
   itemID: 9c25cc3c-9637-4709-979c-2a60289be92f
-  statBonusses: []
+  statBonusses:
+  - stat: 0
+    bonus: 10
   armorType: 1

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   equippedItems:
-    head: {fileID: 0}
-    chest: {fileID: 0}
-    legs: {fileID: 0}
-    feet: {fileID: 0}
-    weapon: {fileID: 0}
+    head: {fileID: 11400000, guid: 1b7bba70481a0dd4788e479fbd6d454e, type: 2}
+    chest: {fileID: 11400000, guid: d1559f64d98d99d49875334fd9d660f8, type: 2}
+    legs: {fileID: 11400000, guid: f3b36b754b62e4b45b30bec63c6ade7e, type: 2}
+    feet: {fileID: 11400000, guid: c1d12356f97d25345ba0ff2b3f50c8b2, type: 2}
+    weapon: {fileID: 11400000, guid: 7968bee96b27f614a99569f78211fa3c, type: 2}
     hpPotions:
     - {fileID: 11400000, guid: e143ab3e2735b7640ad7dcbdaf19bbf4, type: 2}
     - {fileID: 11400000, guid: e143ab3e2735b7640ad7dcbdaf19bbf4, type: 2}

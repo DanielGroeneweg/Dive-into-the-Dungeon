@@ -6,8 +6,8 @@ using static CraftManager;
 public class SpellDefinition : ScriptableObject
 {
     public string spellName;
-    public SpellForm form;
-    public SpellComponent[] components = new SpellComponent[9];
+    //public SpellForm form;
+    public SpellComponent[] components = new SpellComponent[10];
     public void SetName(string input)
     {
         spellName = input;

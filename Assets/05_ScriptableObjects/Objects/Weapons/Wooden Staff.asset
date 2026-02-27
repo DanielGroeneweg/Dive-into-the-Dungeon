@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Wooden Staff
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   itemName: Wooden Staff
-  icon: {fileID: 0}
-  prefab: {fileID: 0}
+  icon: {fileID: 21300000, guid: e42582761f2004ed18e7c41009e2a6f9, type: 3}
   itemID: d568f7f8-fcaf-4ee5-9f00-354802071c72
   statBonusses: []
-  weaponType: 0
   damage: 10
   attackSpeed: 0.75
+  prefab: {fileID: 2938362120325029502, guid: fdbe8f60f2f89f04e8583d28d27df07e, type: 3}

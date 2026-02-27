@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Spell2
   m_EditorClassIdentifier: Assembly-CSharp::SpellDefinition
   spellName: Ba Sing Se Wall
-  form: {fileID: 11400000, guid: 7cf6aa98671b9ff4f834a0c301d9de1a, type: 2}
   components:
+  - {fileID: 11400000, guid: 7cf6aa98671b9ff4f834a0c301d9de1a, type: 2}
   - {fileID: 11400000, guid: b8c60cde592db98409c63b84e4fb6316, type: 2}
   - {fileID: 11400000, guid: 26d02dbd42cf07d428851f24ec3bf274, type: 2}
   - {fileID: 11400000, guid: 26d02dbd42cf07d428851f24ec3bf274, type: 2}
-  - {fileID: 11400000, guid: 94c2e8c4329624e4db42b3457443b117, type: 2}
-  - {fileID: 11400000, guid: 94c2e8c4329624e4db42b3457443b117, type: 2}
-  - {fileID: 11400000, guid: 94c2e8c4329624e4db42b3457443b117, type: 2}
-  - {fileID: 11400000, guid: 94c2e8c4329624e4db42b3457443b117, type: 2}
-  - {fileID: 11400000, guid: 94c2e8c4329624e4db42b3457443b117, type: 2}
-  - {fileID: 11400000, guid: 94c2e8c4329624e4db42b3457443b117, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

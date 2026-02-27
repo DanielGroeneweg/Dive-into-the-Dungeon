@@ -967,6 +967,7 @@ Transform:
   - {fileID: 1278807149}
   - {fileID: 2105061307}
   - {fileID: 134164598}
+  - {fileID: 2101481512}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &192964008
@@ -2016,7 +2017,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 731600061}
-        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: InventoryUIManager, Assembly-CSharp
         m_MethodName: UnEquipWeapon
         m_Mode: 1
         m_Arguments:
@@ -2065,6 +2066,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258961020}
   m_CullTransparentMesh: 1
+--- !u!1 &266154054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 266154055}
+  - component: {fileID: 266154056}
+  m_Layer: 6
+  m_Name: WeaponRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &266154055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266154054}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.419, y: -0.5, z: 0.66}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1403095918}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &266154056
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266154054}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 36379b9ee3807324fa09f24756b3fa33, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &270815138
 GameObject:
   m_ObjectHideFlags: 0
@@ -2646,7 +2701,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 731600061}
-        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: InventoryUIManager, Assembly-CSharp
         m_MethodName: UnEquipFoot
         m_Mode: 1
         m_Arguments:
@@ -6372,10 +6427,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 731600059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 369363fc676f9bb4d88907ef63c62f89, type: 3}
+  m_Script: {fileID: 11500000, guid: aa27164c90a4e084a8f13a87d640fd7c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryUIManager
+  headButton: {fileID: 1122814313}
+  chestButton: {fileID: 906255707}
+  legButton: {fileID: 675179506}
+  footButton: {fileID: 42653173}
+  weaponButton: {fileID: 1885200173}
   inventory: {fileID: 11400000, guid: a01357abbf779eb42aa3637c45f63c8b, type: 2}
+  playerStats: {fileID: 2094460743}
 --- !u!1 &734927388
 GameObject:
   m_ObjectHideFlags: 0
@@ -11452,6 +11513,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
   inventory: {fileID: 11400000, guid: a01357abbf779eb42aa3637c45f63c8b, type: 2}
+  dataBase: {fileID: 11400000, guid: 477a091886d0a9041abdd89ec8c685f9, type: 2}
+  playerStats: {fileID: 2094460743}
+  potion: {fileID: 11400000, guid: e143ab3e2735b7640ad7dcbdaf19bbf4, type: 2}
 --- !u!1 &1294401893
 GameObject:
   m_ObjectHideFlags: 0
@@ -11536,7 +11600,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 731600061}
-        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: InventoryUIManager, Assembly-CSharp
         m_MethodName: UnEquipLeg
         m_Mode: 1
         m_Arguments:
@@ -12689,7 +12753,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 266154055}
   m_Father: {fileID: 2094460735}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1425913933
@@ -13493,7 +13558,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 731600061}
-        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: InventoryUIManager, Assembly-CSharp
         m_MethodName: UnEquipChest
         m_Mode: 1
         m_Arguments:
@@ -15077,7 +15142,7 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: a01357abbf779eb42aa3637c45f63c8b, type: 2}
   displayerPrefab: {fileID: 652183519412959654, guid: e0af1199efbfe4941aef2079dc354e2c, type: 3}
   content: {fileID: 1802170704}
-  inventoryManager: {fileID: 0}
+  inventoryManager: {fileID: 731600061}
 --- !u!114 &1802170703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18005,6 +18070,7 @@ MonoBehaviour:
   rb: {fileID: 2094460744}
   input: {fileID: 2094460736}
   playerCam: {fileID: 1403095915}
+  attackAnimator: {fileID: 266154056}
 --- !u!4 &2094460735
 Transform:
   m_ObjectHideFlags: 0
@@ -18096,7 +18162,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094460733}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -18182,7 +18248,7 @@ Rigidbody:
   m_GameObject: {fileID: 2094460733}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 5
+  m_LinearDamping: 2.5
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -18195,11 +18261,67 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!1 &2101481511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2101481512}
+  - component: {fileID: 2101481513}
+  m_Layer: 0
+  m_Name: SpellLoaderAndSaver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2101481512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101481511}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 191099258}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2101481513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101481511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4577f1a1c3d35474f96c2a2b5a5b20a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpellLoaderAndSaver
+  dataBase: {fileID: 11400000, guid: 35022fcdc58b71549becd4da7dc4fd53, type: 2}
+  spells:
+  - {fileID: 11400000, guid: a1b2484c417be3c4089cc0f75c569184, type: 2}
+  - {fileID: 11400000, guid: f25962e58db93bb4392a6187d19acadc, type: 2}
+  - {fileID: 11400000, guid: f7759bf81aa98034c8a5cb21fe80445a, type: 2}
+  - {fileID: 11400000, guid: b710f885f4e9f1f46874339e93580bab, type: 2}
+  - {fileID: 11400000, guid: 844114183c6ecd04e9a0dcb9276de5c9, type: 2}
+  - {fileID: 11400000, guid: b215114fb943ef943ac357e32d3b4d02, type: 2}
+  - {fileID: 11400000, guid: 3208e04770efe6243a194e96b82ccecb, type: 2}
+  - {fileID: 11400000, guid: 604fe92197d2b284ba2cdda2987709c5, type: 2}
+  - {fileID: 11400000, guid: 439600c05d8f19d49b9dd269e8991ea9, type: 2}
+  - {fileID: 11400000, guid: c59a9d0b8db4b8e48a4e9c1ac54b80c8, type: 2}
 --- !u!1 &2105061305
 GameObject:
   m_ObjectHideFlags: 0
@@ -18231,6 +18353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Locator
   player: {fileID: 2094460735}
   potionPresenter: {fileID: 771043597}
+  inventory: {fileID: 11400000, guid: a01357abbf779eb42aa3637c45f63c8b, type: 2}
 --- !u!4 &2105061307
 Transform:
   m_ObjectHideFlags: 0
@@ -18659,7 +18782,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 731600061}
-        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: InventoryUIManager, Assembly-CSharp
         m_MethodName: UnEquipHead
         m_Mode: 1
         m_Arguments:
@@ -18927,8 +19050,8 @@ MonoBehaviour:
   componentNameLabel: {fileID: 1652820181}
   componentDescription: {fileID: 539448055}
   placeHolderSpell:
-    form: {fileID: 0}
     components:
+    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}

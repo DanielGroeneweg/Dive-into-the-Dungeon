@@ -20,8 +20,7 @@ public class CraftManager : MonoBehaviour
     [SerializeField] private TMP_Text componentDescription;
     [Serializable] private class PlaceHolderSpell
     {
-        public SpellForm form;
-        public SpellComponent[] components = new SpellComponent[9];
+        public SpellComponent[] components = new SpellComponent[10];
     }
     [SerializeField] private PlaceHolderSpell placeHolderSpell;
     private int selectedComponentIndex;
@@ -37,29 +36,33 @@ public class CraftManager : MonoBehaviour
     {
         bool isValid = true;
 
-        if (placeHolderSpell.form == null) isValid = false;
+        if (placeHolderSpell.components[0] == null || !(placeHolderSpell.components[0] is SpellForm spellForm)) isValid = false;
 
         else
         {
-            SpellComponent lastComponent = placeHolderSpell.form;
+            SpellComponent lastComponent = placeHolderSpell.components[0];
 
-            foreach (SpellComponent component in placeHolderSpell.components)
+            for(int i = 1; i < placeHolderSpell.components.Length; i++)
             {
+                SpellComponent component = placeHolderSpell.components[i];
+
                 if (component == null) continue;
 
                 if (lastComponent is SpellForm form)
                 {
                     if (!form.allowedFollowUps.Contains(component))
                     {
+                        Debug.Log($"{component.ComponentName} not allowed after {lastComponent.ComponentName}");
                         isValid = false;
                         break;
-                    } 
+                    }
                 }
 
                 else if (lastComponent is SpellEffect effect)
                 {
                     if (!effect.allowedFollowUps.Contains(component))
                     {
+                        Debug.Log("not allowed");
                         isValid = false;
                         break;
                     }
@@ -72,11 +75,12 @@ public class CraftManager : MonoBehaviour
             }
         }
 
+        Debug.Log(isValid);
+
         if (!isValid) ClearPlaceholderSpell();
 
         else
         {
-            selected.spell.form = placeHolderSpell.form;
             for (int i = 0; i < placeHolderSpell.components.Length; i++)
             {
                 SpellComponent component = placeHolderSpell.components[i];
@@ -99,7 +103,6 @@ public class CraftManager : MonoBehaviour
             selected.spell.components[i] = null;
         }
 
-        selected.spell.form = null;
         selectedComponentIndex = 0;
         ClearPlaceholderSpell();
     }
@@ -108,7 +111,6 @@ public class CraftManager : MonoBehaviour
     /// </summary>
     private void ClearPlaceholderSpell()
     {
-        placeHolderSpell.form = null;
         foreach (Image image in componentSlots)
         {
             image.sprite = null;
@@ -139,27 +141,16 @@ public class CraftManager : MonoBehaviour
 
         // Show Icons
         {
-            if (selected.spell.form != null)
-            {
-                componentSlots[0].sprite = selected.spell.form.Icon;
-                placeHolderSpell.form = selected.spell.form;
-            }
-            else
-            {
-                componentSlots[0].sprite = null;
-                placeHolderSpell.form = null;
-            }
-
             for (int i = 0; i < selected.spell.components.Length; i++)
             {
                 if (selected.spell.components[i] != null)
                 {
-                    componentSlots[i + 1].sprite = selected.spell.components[i].Icon;
+                    componentSlots[i].sprite = selected.spell.components[i].Icon;
                     placeHolderSpell.components[i] = selected.spell.components[i];
                 }
                 else
                 {
-                    componentSlots[i + 1].sprite = null;
+                    componentSlots[i].sprite = null;
                     placeHolderSpell.components[i] = null;
                 }
             }
@@ -180,9 +171,7 @@ public class CraftManager : MonoBehaviour
     {
         if (selectedComponentIndex >= componentSlots.Length) return;
 
-        if (selectedComponentIndex == 0) placeHolderSpell.form = (SpellForm)component;
-
-        else placeHolderSpell.components[selectedComponentIndex - 1] = component;
+        placeHolderSpell.components[selectedComponentIndex] = component;
 
         componentSlots[selectedComponentIndex].sprite = component.Icon;
 
@@ -196,22 +185,14 @@ public class CraftManager : MonoBehaviour
     /// <param name="index"></param>
     public void RemoveComponent(int index)
     {
-        if (index == 0)
+        if (placeHolderSpell.components[index] == null)
         {
-            placeHolderSpell.form = null;
+            FindComponentSlot();
+            DisableDisallowedComponents();
+            return;
         }
 
-        else
-        {
-            if (placeHolderSpell.components[index - 1] == null)
-            {
-                FindComponentSlot();
-                DisableDisallowedComponents();
-                return;
-            }
-
-            placeHolderSpell.components[index - 1] = null;
-        }
+        placeHolderSpell.components[index] = null;
 
         selectedComponentIndex = index;
 
@@ -252,17 +233,11 @@ public class CraftManager : MonoBehaviour
     /// </summary>
     private void FindComponentSlot()
     {
-        if (placeHolderSpell.form == null)
-        {
-            selectedComponentIndex = 0;
-            return;
-        }
-
         for (int i = 0; i < placeHolderSpell.components.Length; i++)
         {
             if (placeHolderSpell.components[i] == null)
             {
-                selectedComponentIndex = i + 1;
+                selectedComponentIndex = i;
                 return;
             }
         }
@@ -283,22 +258,27 @@ public class CraftManager : MonoBehaviour
         else
         {
             SpellComponent lastComponent = null;
-            lastComponent = placeHolderSpell.form;
+            lastComponent = placeHolderSpell.components[0];
 
-            for (int i = selectedComponentIndex - 2; i >= 0; i--)
+            for (int i = selectedComponentIndex - 1; i >= 0; i--)
             {
-                if (placeHolderSpell.components[i] == null) break;
+                if (placeHolderSpell.components[i] == null)
+                    continue;
 
                 if (placeHolderSpell.components[i] is SpellEffect effect)
                 {
                     lastComponent = effect;
                     break;
                 }
+
+                if (placeHolderSpell.components[i] is SpellForm form)
+                {
+                    lastComponent = form;
+                    break;
+                }
             }
 
             if (lastComponent == null) return;
-
-            Debug.Log(lastComponent.name);
 
             foreach (SpellComponentButton component in components)
             {

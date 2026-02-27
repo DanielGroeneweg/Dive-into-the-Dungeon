@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Spell9
   m_EditorClassIdentifier: Assembly-CSharp::SpellDefinition
   spellName: 
-  form: {fileID: 0}
   components:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

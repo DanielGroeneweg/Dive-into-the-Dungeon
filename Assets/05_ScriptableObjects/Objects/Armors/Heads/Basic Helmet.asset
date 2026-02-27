@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Basic Helmet
   m_EditorClassIdentifier: Assembly-CSharp::Armor
   itemName: Basic Helmet
-  icon: {fileID: 0}
-  prefab: {fileID: 0}
+  icon: {fileID: 21300000, guid: fd6e4fc32c78509458fc45ea4a478ba8, type: 3}
   itemID: 5043feb7-cd0c-4160-b8e3-57028b704c02
   statBonusses: []
   armorType: 0

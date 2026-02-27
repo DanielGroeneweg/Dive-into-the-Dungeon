@@ -29,6 +29,8 @@ public class InventoryUIManager : MonoBehaviour
             case Weapon weapon:
                 inventory.equippedItems.weapon = weapon;
                 weaponButton.sprite = weapon.Icon;
+                EquipWeaponEventData data = new EquipWeaponEventData(weapon);
+                EventBusManager.Instance.EquipWeaponEvent.Raise(data);
                 break;
 
             default:
@@ -99,6 +101,8 @@ public class InventoryUIManager : MonoBehaviour
     {
         inventory.equippedItems.weapon = null;
         weaponButton.sprite = null;
+        EquipWeaponEventData data = new EquipWeaponEventData(null);
+        EventBusManager.Instance.EquipWeaponEvent.Raise(data);
         UpdatePlayerStats();
     }
     #endregion
@@ -128,6 +132,12 @@ public class InventoryUIManager : MonoBehaviour
     private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.None;
+
+        if (inventory.equippedItems.head != null) headButton.sprite = inventory.equippedItems.head.Icon;
+        if (inventory.equippedItems.chest != null) chestButton.sprite = inventory.equippedItems.chest.Icon;
+        if (inventory.equippedItems.legs != null) legButton.sprite = inventory.equippedItems.legs.Icon;
+        if (inventory.equippedItems.feet != null) footButton.sprite = inventory.equippedItems.feet.Icon;
+        if (inventory.equippedItems.weapon != null) weaponButton.sprite = inventory.equippedItems.weapon.Icon;
     }
     private void OnDisable()
     {
