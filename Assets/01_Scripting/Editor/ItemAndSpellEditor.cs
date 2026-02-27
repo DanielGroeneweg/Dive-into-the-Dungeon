@@ -1,14 +1,27 @@
 #if UNITY_EDITOR
+using JetBrains.Annotations;
 using UnityEditor;
 using UnityEngine;
-[CustomEditor(typeof(Spell), true)]
-public class ItemAndSpellEditor : Editor
+[CustomEditor(typeof(SpellComponent), true)]
+public class SpellComponentEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
 
-        Spell item = (Spell)target;
+        SpellComponent component = (SpellComponent)target;
+        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Spell ID", component.SpellComponentID);
+    }
+}
+[CustomEditor(typeof(Item), true)]
+public class ItemEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+
+        Item item = (Item)target;
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Item ID", item.ItemID);
     }
