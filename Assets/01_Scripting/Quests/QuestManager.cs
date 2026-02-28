@@ -61,6 +61,7 @@ public class QuestManager : MonoBehaviour
             displayer.DisplayQuestProgress();
             if (displayer.quest.Progress >= displayer.quest.AmountNeeded)
             {
+                displayer.quest.Reward.InvokeReward();
                 displayers.Remove(displayer);
                 Destroy(displayer.gameObject);
             }
