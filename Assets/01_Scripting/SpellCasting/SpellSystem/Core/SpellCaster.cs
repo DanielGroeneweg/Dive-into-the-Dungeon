@@ -55,10 +55,8 @@ public class SpellCaster : MonoBehaviour
         if (currentSpell.components.Length > 0)
         {
             // Get the first effect of the spell
-            SpellEffect first = (SpellEffect)currentSpell.components[0];
-
-            // Do nothing if no effects are attached
-            if (first == null) return;
+            // Do nothing if the first effect is not an effect
+            if (!(currentSpell.components[1] is SpellEffect first)) return;
 
             // Create a modified effect to add to the context list
             ModifiedEffect modifiedEffect = new ModifiedEffect { effect = first, stats = new SpellStats() };
