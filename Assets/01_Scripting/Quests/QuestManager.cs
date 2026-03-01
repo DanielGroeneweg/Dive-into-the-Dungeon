@@ -9,13 +9,13 @@ public class QuestManager : MonoBehaviour
     private List<QuestDisplayer> displayers = new();
     private void OnEnable()
     {
-        EventBusManager.Instance.GetItemEvent.Register(ItemQuestProgress);
-        EventBusManager.Instance.EnemyDeathEvent.Register(EnemyQuestProgress);
+        GameManager.Instance.LinkGetItemEvent(ItemQuestProgress);
+        GameManager.Instance.LinkEnemyDeathEvent(EnemyQuestProgress);
     }
     private void OnDisable()
     {
-        EventBusManager.Instance.GetItemEvent.Unregister(ItemQuestProgress);
-        EventBusManager.Instance.EnemyDeathEvent.Unregister(EnemyQuestProgress);
+        GameManager.Instance.UnlinkGetItemEvent(ItemQuestProgress);
+        GameManager.Instance.UnlinkEnemyDeathEvent(EnemyQuestProgress);
     }
     private void Start()
     {
@@ -61,6 +61,7 @@ public class QuestManager : MonoBehaviour
             displayer.DisplayQuestProgress();
             if (displayer.quest.Progress >= displayer.quest.AmountNeeded)
             {
+                displayer.quest.Reward.InvokeReward();
                 displayers.Remove(displayer);
                 Destroy(displayer.gameObject);
             }

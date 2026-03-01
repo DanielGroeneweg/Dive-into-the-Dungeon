@@ -85,7 +85,7 @@ public class JumpAttack : Attack
         if ((Locator.instance.Player.position - transform.position).magnitude <= slamRadius)
         {
             DamagePlayerEventData data = new DamagePlayerEventData(damage, gameObject);
-            EventBusManager.Instance.DamagePlayerEvent.Raise(data);
+            GameManager.Instance.DamagePlayer(data);
         }
 
         EndAttack();

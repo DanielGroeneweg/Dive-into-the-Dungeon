@@ -9,13 +9,13 @@ public class Enemy : MonoBehaviour
     public void Killenemy()
     {
         EnemyDeathEventData data = new EnemyDeathEventData(enemyType, xpOnDeath);
-        EventBusManager.Instance.EnemyDeathEvent.Raise(data);
+        GameManager.Instance.EnemyDeath(data);
 
         foreach(ItemDrop itemDrop in itemDrops)
         {
             if (Random.Range(0f,0.99f) >= 1 - itemDrop.dropChance)
             {
-                if (itemDrop.item != null) EventBusManager.Instance.GetItemEvent.Raise(new GetItemEventData(itemDrop.item));
+                if (itemDrop.item != null) GameManager.Instance.GetItem(new GetItemEventData(itemDrop.item));
             }
         }
     }

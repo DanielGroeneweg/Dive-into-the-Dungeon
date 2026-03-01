@@ -28,11 +28,11 @@ public class SimplePlayerController : MonoBehaviour
     }
     private void OnEnable()
     {
-        EventBusManager.Instance.EquipWeaponEvent.Register(ChangeWeapon);
+        GameManager.Instance.LinkEquipWeaponEvent(ChangeWeapon);
     }
     private void OnDisable()
     {
-        EventBusManager.Instance.EquipWeaponEvent.Unregister(ChangeWeapon);
+        GameManager.Instance.UnlinkEquipWeaponEvent(ChangeWeapon);
     }
     #region PlayerInput
     public void OnMove(InputValue input)
@@ -45,11 +45,11 @@ public class SimplePlayerController : MonoBehaviour
     }
     public void OnJump(InputValue input)
     {
-        if (Grounded()) rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        if (enabled && Grounded()) rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
     public void OnAttack(InputValue input)
     {
-        if (isAttacking || weapon == null) return;
+        if (isAttacking || weapon == null || !enabled) return;
 
         isAttacking = true;
         weaponCollider.enabled = true;

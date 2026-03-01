@@ -23,7 +23,6 @@ public class AttackBehaviour : MonoBehaviour
             attacks[index].AttackEndAction = SetAttackingFalse;
             isAttacking = true;
             index = index + 1 >= attacks.Count ? 0 : index + 1;
-            Debug.Log(index);
         }
     }
     private void SetAttackingFalse() { isAttacking = false; }
