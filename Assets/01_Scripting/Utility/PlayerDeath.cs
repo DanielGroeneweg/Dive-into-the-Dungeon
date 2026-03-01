@@ -5,11 +5,11 @@ public class PlayerDeath : MonoBehaviour
     [SerializeField] private UnityEvent OnDeath;
     private void OnEnable()
     {
-        EventBusManager.Instance.GameOverEvent.Register(OnPlayerDeath);
+        GameManager.Instance.LinkGameOverEvent(OnPlayerDeath);
     }
     private void OnDisable()
     {
-        EventBusManager.Instance.GameOverEvent.Unregister(OnPlayerDeath);
+        GameManager.Instance.UnlinkGameOverEvent(OnPlayerDeath);
     }
     private void OnPlayerDeath(GameOverEventData data)
     {

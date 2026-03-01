@@ -10,13 +10,13 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private Potion potion;
     private void OnEnable()
     {
-        EventBusManager.Instance.GetItemEvent.Register(AddItem);
-        EventBusManager.Instance.GameOverEvent.Register(SaveInventoryData);
+        GameManager.Instance.LinkGetItemEvent(AddItem);
+        GameManager.Instance.LinkGameOverEvent(SaveInventoryData);
     }
     private void OnDisable()
     {
-        EventBusManager.Instance.GetItemEvent.Unregister(AddItem);
-        EventBusManager.Instance.GameOverEvent.Unregister(SaveInventoryData);
+        GameManager.Instance.UnlinkGetItemEvent(AddItem);
+        GameManager.Instance.UnlinkGameOverEvent(SaveInventoryData);
     }
     private void AddItem(GetItemEventData data)
     {
@@ -64,7 +64,7 @@ public class InventoryManager : MonoBehaviour
         if (inventory.equippedItems.weapon != null)
         {
             EquipWeaponEventData data = new EquipWeaponEventData(inventory.equippedItems.weapon);
-            EventBusManager.Instance.EquipWeaponEvent.Raise(data);
+            GameManager.Instance.EquipWeapon(data);
         }
     }
     private void OnApplicationQuit()

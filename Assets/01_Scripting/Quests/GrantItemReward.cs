@@ -7,7 +7,7 @@ public class GrantItemReward : QuestReward
     {
         foreach (Item item in items)
         {
-            EventBusManager.Instance.GetItemEvent.Raise(new GetItemEventData(item));
+            GameManager.Instance.GetItem(new GetItemEventData(item));
         }
     }
 }

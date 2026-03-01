@@ -17,11 +17,11 @@ public class EnemyController : MonoBehaviour
     }
     private void OnEnable()
     {
-        EventBusManager.Instance.GameOverEvent.Register(Disable);
+        GameManager.Instance.LinkGameOverEvent(Disable);
     }
     private void OnDisable()
     {
-        EventBusManager.Instance.GameOverEvent.Unregister(Disable);
+        GameManager.Instance.UnlinkGameOverEvent(Disable);
     }
     private void Disable(GameOverEventData data) { enabled = false; }
 }

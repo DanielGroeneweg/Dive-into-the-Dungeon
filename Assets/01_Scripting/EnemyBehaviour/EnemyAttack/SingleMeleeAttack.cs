@@ -22,7 +22,7 @@ public class SingleMeleeAttack : Attack
     public void PlayerHit()
     {
         DamagePlayerEventData data = new DamagePlayerEventData(damage, gameObject);
-        EventBusManager.Instance.DamagePlayerEvent.Raise(data);
+        GameManager.Instance.DamagePlayer(data);
     }
     private IEnumerator EndAttack()
     {

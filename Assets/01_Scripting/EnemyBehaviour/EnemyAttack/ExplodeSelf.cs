@@ -37,7 +37,7 @@ public class ExplodeSelf : Attack
         if ((Locator.instance.Player.position - transform.position).magnitude <= radius)
         {
             DamagePlayerEventData data = new DamagePlayerEventData(damage, gameObject);
-            EventBusManager.Instance.DamagePlayerEvent.Raise(data);
+            GameManager.Instance.DamagePlayer(data);
         }
 
         // Summon explosion

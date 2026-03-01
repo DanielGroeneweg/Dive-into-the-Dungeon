@@ -30,7 +30,7 @@ public class InventoryUIManager : MonoBehaviour
                 inventory.equippedItems.weapon = weapon;
                 weaponButton.sprite = weapon.Icon;
                 EquipWeaponEventData data = new EquipWeaponEventData(weapon);
-                EventBusManager.Instance.EquipWeaponEvent.Raise(data);
+                GameManager.Instance.EquipWeapon(data);
                 break;
 
             default:
@@ -102,7 +102,7 @@ public class InventoryUIManager : MonoBehaviour
         inventory.equippedItems.weapon = null;
         weaponButton.sprite = null;
         EquipWeaponEventData data = new EquipWeaponEventData(null);
-        EventBusManager.Instance.EquipWeaponEvent.Raise(data);
+        GameManager.Instance.EquipWeapon(data);
         UpdatePlayerStats();
     }
     #endregion

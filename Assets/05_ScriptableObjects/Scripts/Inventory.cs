@@ -26,7 +26,7 @@ public class Inventory : ScriptableObject
         {
             Potion potion = equippedItems.hpPotions[equippedItems.hpPotions.Count - 1];
             HealPlayerEventData data = new HealPlayerEventData(potion.Healing, potion.IsOverTime, potion.Time, potion.HealInterval, potion.HasInitialBurst, potion.InitialBurst);
-            EventBusManager.Instance.HealPlayerEvent.Raise(data);
+            GameManager.Instance.HealPlayer(data);
             equippedItems.hpPotions.Remove(potion);
 
             Locator.instance.PotionPresenter.SetValue(0, float.PositiveInfinity, equippedItems.hpPotions.Count);

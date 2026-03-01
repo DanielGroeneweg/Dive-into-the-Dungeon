@@ -8,7 +8,7 @@ public class SpellCaster : MonoBehaviour
     public void TryCast(InputAction.CallbackContext inputContext)
     {
         // Prevent multiple events from new input system
-        if (inputContext.phase != InputActionPhase.Performed) return;
+        if (inputContext.phase != InputActionPhase.Performed || !enabled) return;
 
         // Create spell context
         SpellContext context = new SpellContext
@@ -40,7 +40,7 @@ public class SpellCaster : MonoBehaviour
         if (!playerStats.HasEnoughMana(manaCost)) return;
 
         // Invoke mana loss event
-        EventBusManager.Instance.LoseManaEvent.Raise(new LoseManaEventData(manaCost));
+        GameManager.Instance.LoseMana(new LoseManaEventData(manaCost));
 
         // Cast the spell
         if (currentSpell.components[0] is SpellForm form) form.Execute(context);

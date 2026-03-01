@@ -81,11 +81,11 @@ public class SpellLoaderAndSaver : MonoBehaviour
     private void OnEnable()
     {
         LoadSpells();
-        EventBusManager.Instance.GameOverEvent.Register(SaveSpells);
+        GameManager.Instance.LinkGameOverEvent(SaveSpells);
     }
     private void OnDisable()
     {
-        EventBusManager.Instance.GameOverEvent.Unregister(SaveSpells);
+        GameManager.Instance.UnlinkGameOverEvent(SaveSpells);
     }
     private void OnApplicationQuit()
     {
