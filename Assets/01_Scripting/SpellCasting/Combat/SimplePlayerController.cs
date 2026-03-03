@@ -25,6 +25,12 @@ public class SimplePlayerController : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+
+        xRotation = playerCam.transform.localEulerAngles.x;
+
+        // Convert from 0–360 range to -180–180 range
+        if (xRotation > 180f)
+            xRotation -= 360f;
     }
     private void OnEnable()
     {
@@ -58,11 +64,13 @@ public class SimplePlayerController : MonoBehaviour
         StartCoroutine(DisableAttack(Locator.instance.Inventory.equippedItems.weapon.AttackSpeed));
     }
     #endregion
+    private void Update()
+    {
+        DoLookAround();
+    }
     private void FixedUpdate()
     {
         DoMovement();
-
-        DoLookAround();
     }
     private void DoMovement()
     {

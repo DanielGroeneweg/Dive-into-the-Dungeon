@@ -12,7 +12,7 @@ public class SpellComponentDataBase : ScriptableObject
     {
         foreach(SpellComponent component in spellComponents)
         {
-            if (!components.ContainsKey(component.SpellComponentID)) components.Add(component.SpellComponentID, component);
+            if (!components.ContainsKey(component.SpellComponentID) && component != null) components.Add(component.SpellComponentID, component);
         }
         UnityEditor.EditorUtility.SetDirty(this);
     }
