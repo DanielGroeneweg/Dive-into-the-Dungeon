@@ -2648,7 +2648,7 @@ MonoBehaviour:
   fillX: 1
   fillY: 0
   fillMin: 0
-  fillMax: 1
+  fillMax: 2
   bar: {fileID: 7465757600407636567}
 --- !u!1 &4999297949835770953
 GameObject:
