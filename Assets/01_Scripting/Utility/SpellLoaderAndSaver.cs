@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using System.Collections;
 public class SpellLoaderAndSaver : MonoBehaviour
 {
     [SerializeField] private SpellComponentDataBase dataBase;
@@ -81,6 +82,11 @@ public class SpellLoaderAndSaver : MonoBehaviour
     private void OnEnable()
     {
         LoadSpells();
+        StartCoroutine(Link());
+    }
+    private IEnumerator Link()
+    {
+        yield return new WaitForEndOfFrame();
         GameManager.Instance.LinkGameOverEvent(SaveSpells);
     }
     private void OnDisable()

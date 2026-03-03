@@ -65,7 +65,8 @@ public class SpellCaster : MonoBehaviour
             // Set mana cost
             modifiedEffect.cost = first.ManaCost;
 
-            for (int i = 1; i < currentSpell.components.Length; i++)
+            // Start at index 2 since 0 is form and 1 is first
+            for (int i = 2; i < currentSpell.components.Length; i++)
             {
                 // Casting
                 SpellComponent component = currentSpell.components[i];

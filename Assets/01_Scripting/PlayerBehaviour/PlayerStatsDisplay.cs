@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 public class PlayerStatsDisplay : MonoBehaviour
 {
     [SerializeField] private Presenter[] hpPresenters;
@@ -7,6 +8,12 @@ public class PlayerStatsDisplay : MonoBehaviour
     [SerializeField] private Presenter[] levelPresenters;
     private void OnEnable()
     {
+        StartCoroutine(Link());
+    }
+    private IEnumerator Link()
+    {
+        Debug.Log("linkin");
+        yield return new WaitForEndOfFrame();
         GameManager.Instance.LinkUpdateStatsEvent(UpdateStatDisplay);
     }
     private void OnDisable()

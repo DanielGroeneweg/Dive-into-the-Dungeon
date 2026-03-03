@@ -34,6 +34,11 @@ public class SimplePlayerController : MonoBehaviour
     }
     private void OnEnable()
     {
+        StartCoroutine(Link());
+    }
+    private IEnumerator Link()
+    {
+        yield return new WaitForEndOfFrame();
         GameManager.Instance.LinkEquipWeaponEvent(ChangeWeapon);
     }
     private void OnDisable()

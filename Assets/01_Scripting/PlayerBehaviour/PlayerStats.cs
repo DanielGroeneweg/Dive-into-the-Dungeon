@@ -28,7 +28,11 @@ public class PlayerStats : MonoBehaviour
     #region EventBusSetUp
     private void OnEnable()
     {
-
+        StartCoroutine(Link());        
+    }
+    private IEnumerator Link()
+    {
+        yield return new WaitForEndOfFrame();
         GameManager.Instance.LinkHealPlayerEvent(HealPlayer);
         GameManager.Instance.LinkDamagePlayerEvent(DamagePlayer);
         GameManager.Instance.LinkEnemyDeathEvent(GainXP);
@@ -173,6 +177,7 @@ public class PlayerStats : MonoBehaviour
     }
     private void RemoveMana(LoseManaEventData data)
     {
+        Debug.Log($"losing {data.mana} mana");
         mana = Mathf.Clamp(mana - Mathf.Abs(data.mana), 0, maxMana);
         UpdateStatsEventData statsData = new UpdateStatsEventData(level, hp, maxhp, mana, maxMana, xp, xpPerLevel);
         GameManager.Instance.UpdateStats(statsData);

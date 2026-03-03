@@ -28,8 +28,8 @@ public class EnemySpawner : MonoBehaviour
             pos.z += Random.Range(-spawnRange, spawnRange);
 
             // Find closest available navmesh point
-            NavMeshHit myNavHit;
-            if (NavMesh.SamplePosition(pos, out myNavHit, 100, -1))
+            UnityEngine.AI.NavMeshHit myNavHit;
+            if (UnityEngine.AI.NavMesh.SamplePosition(pos, out myNavHit, 100, -1))
             {
                 pos = myNavHit.position;
             }

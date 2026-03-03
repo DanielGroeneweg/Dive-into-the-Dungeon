@@ -10,6 +10,11 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private Potion potion;
     private void OnEnable()
     {
+        StartCoroutine(Link());
+    }
+    private IEnumerator Link()
+    {
+        yield return new WaitForEndOfFrame();
         GameManager.Instance.LinkGetItemEvent(AddItem);
         GameManager.Instance.LinkGameOverEvent(SaveInventoryData);
     }
