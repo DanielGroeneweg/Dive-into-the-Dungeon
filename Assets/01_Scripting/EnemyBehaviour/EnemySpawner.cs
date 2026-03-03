@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
-using UnityEngine.AI;
+using System.Collections.Generic;
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private Enemy enemyToSpawn;
+    [SerializeField] private List<Enemy> enemiesToSpawn = new();
+    [SerializeField] private float spawnRange;
+    [SerializeField] private bool canRespawn;
     [SerializeField] private int maxEnemyCount;
     [SerializeField] private float enemySpawnInterval;
     [Range(0f,1f)][SerializeField] private float enemySpawnChance;
-    [SerializeField] private float spawnRange;
     private int enemyCount;
     private void Start()
     {
@@ -27,8 +28,8 @@ public class EnemySpawner : MonoBehaviour
             pos.z += Random.Range(-spawnRange, spawnRange);
 
             // Find closest available navmesh point
-            NavMeshHit myNavHit;
-            if (NavMesh.SamplePosition(pos, out myNavHit, 100, -1))
+            UnityEngine.AI.NavMeshHit myNavHit;
+            if (UnityEngine.AI.NavMesh.SamplePosition(pos, out myNavHit, 100, -1))
             {
                 pos = myNavHit.position;
             }

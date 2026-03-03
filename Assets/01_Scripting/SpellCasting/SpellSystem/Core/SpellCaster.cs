@@ -8,7 +8,7 @@ public class SpellCaster : MonoBehaviour
     public void TryCast(InputAction.CallbackContext inputContext)
     {
         // Prevent multiple events from new input system
-        if (inputContext.phase != InputActionPhase.Performed) return;
+        if (inputContext.phase != InputActionPhase.Performed || !enabled) return;
 
         // Create spell context
         SpellContext context = new SpellContext
@@ -40,7 +40,7 @@ public class SpellCaster : MonoBehaviour
         if (!playerStats.HasEnoughMana(manaCost)) return;
 
         // Invoke mana loss event
-        EventBusManager.Instance.LoseManaEvent.Raise(new LoseManaEventData(manaCost));
+        GameManager.Instance.LoseMana(new LoseManaEventData(manaCost));
 
         // Cast the spell
         if (currentSpell.components[0] is SpellForm form) form.Execute(context);
@@ -55,10 +55,8 @@ public class SpellCaster : MonoBehaviour
         if (currentSpell.components.Length > 0)
         {
             // Get the first effect of the spell
-            SpellEffect first = (SpellEffect)currentSpell.components[0];
-
-            // Do nothing if no effects are attached
-            if (first == null) return;
+            // Do nothing if the first effect is not an effect
+            if (!(currentSpell.components[1] is SpellEffect first)) return;
 
             // Create a modified effect to add to the context list
             ModifiedEffect modifiedEffect = new ModifiedEffect { effect = first, stats = new SpellStats() };
@@ -67,7 +65,8 @@ public class SpellCaster : MonoBehaviour
             // Set mana cost
             modifiedEffect.cost = first.ManaCost;
 
-            for (int i = 1; i < currentSpell.components.Length; i++)
+            // Start at index 2 since 0 is form and 1 is first
+            for (int i = 2; i < currentSpell.components.Length; i++)
             {
                 // Casting
                 SpellComponent component = currentSpell.components[i];

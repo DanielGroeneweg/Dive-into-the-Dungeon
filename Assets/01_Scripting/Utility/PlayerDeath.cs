@@ -1,15 +1,21 @@
 using UnityEngine.Events;
 using UnityEngine;
+using System.Collections;
 public class PlayerDeath : MonoBehaviour
 {
     [SerializeField] private UnityEvent OnDeath;
     private void OnEnable()
     {
-        EventBusManager.Instance.GameOverEvent.Register(OnPlayerDeath);
+        StartCoroutine(Link());
+    }
+    private IEnumerator Link()
+    {
+        yield return new WaitForEndOfFrame();
+        GameManager.Instance.LinkGameOverEvent(OnPlayerDeath);
     }
     private void OnDisable()
     {
-        EventBusManager.Instance.GameOverEvent.Unregister(OnPlayerDeath);
+        GameManager.Instance.UnlinkGameOverEvent(OnPlayerDeath);
     }
     private void OnPlayerDeath(GameOverEventData data)
     {

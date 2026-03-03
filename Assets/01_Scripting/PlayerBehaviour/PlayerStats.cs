@@ -28,22 +28,26 @@ public class PlayerStats : MonoBehaviour
     #region EventBusSetUp
     private void OnEnable()
     {
-        
-        EventBusManager.Instance.HealPlayerEvent.Register(HealPlayer);
-        EventBusManager.Instance.DamagePlayerEvent.Register(DamagePlayer);
-        EventBusManager.Instance.EnemyDeathEvent.Register(GainXP);
-        EventBusManager.Instance.LoseManaEvent.Register(RemoveMana);
-        EventBusManager.Instance.GainManaEvent.Register(GainMana);
-        EventBusManager.Instance.GameOverEvent.Register(SaveStatsData);
+        StartCoroutine(Link());        
+    }
+    private IEnumerator Link()
+    {
+        yield return new WaitForEndOfFrame();
+        GameManager.Instance.LinkHealPlayerEvent(HealPlayer);
+        GameManager.Instance.LinkDamagePlayerEvent(DamagePlayer);
+        GameManager.Instance.LinkEnemyDeathEvent(GainXP);
+        GameManager.Instance.LinkLoseManaEvent(RemoveMana);
+        GameManager.Instance.LinkGainManaEvent(GainMana);
+        GameManager.Instance.LinkGameOverEvent(SaveStatsData);
     }
     private void OnDisable()
     {
-        EventBusManager.Instance.HealPlayerEvent.Unregister(HealPlayer);
-        EventBusManager.Instance.DamagePlayerEvent.Unregister(DamagePlayer);
-        EventBusManager.Instance.EnemyDeathEvent.Unregister(GainXP);
-        EventBusManager.Instance.LoseManaEvent.Unregister(RemoveMana);
-        EventBusManager.Instance.GainManaEvent.Unregister(GainMana);
-        EventBusManager.Instance.GameOverEvent.Unregister(SaveStatsData);
+        GameManager.Instance.UnlinkHealPlayerEvent(HealPlayer);
+        GameManager.Instance.UnlinkDamagePlayerEvent(DamagePlayer);
+        GameManager.Instance.UnlinkEnemyDeathEvent(GainXP);
+        GameManager.Instance.UnlinkLoseManaEvent(RemoveMana);
+        GameManager.Instance.UnlinkGainManaEvent(GainMana);
+        GameManager.Instance.UnlinkGameOverEvent(SaveStatsData);
     }
     #endregion
     private void Start()
@@ -53,7 +57,7 @@ public class PlayerStats : MonoBehaviour
 
         // Update HUD
         UpdateStatsEventData statsData = new UpdateStatsEventData(level, hp, maxhp, mana, maxMana, xp, xpPerLevel);
-        EventBusManager.Instance.UpdateStatsEvent.Raise(statsData);
+        GameManager.Instance.UpdateStats(statsData);
 
         // Start passive regain
         StartCoroutine(PassiveRegain());
@@ -104,9 +108,9 @@ public class PlayerStats : MonoBehaviour
     {
         hp = Mathf.Clamp(hp - Mathf.Abs(data.damage), 0, maxhp);
         UpdateStatsEventData statsData = new UpdateStatsEventData(level, hp, maxhp, mana, maxMana, xp, xpPerLevel);
-        EventBusManager.Instance.UpdateStatsEvent.Raise(statsData);
+        GameManager.Instance.UpdateStats(statsData);
 
-        if (hp <= 0) EventBusManager.Instance.GameOverEvent.Raise(new GameOverEventData(true));
+        if (hp <= 0) GameManager.Instance.GameOver(new GameOverEventData(true));
     }
     /// <summary>
     /// Heals the player
@@ -116,7 +120,7 @@ public class PlayerStats : MonoBehaviour
     {
         hp = Mathf.Clamp(hp + Mathf.Abs(health), 0, maxhp);
         UpdateStatsEventData statsData = new UpdateStatsEventData(level, hp, maxhp, mana, maxMana, xp, xpPerLevel);
-        EventBusManager.Instance.UpdateStatsEvent.Raise(statsData);
+        GameManager.Instance.UpdateStats(statsData);
     }
     /// <summary>
     /// Calls the Heal method in a way corresponding to the healing type
@@ -169,13 +173,14 @@ public class PlayerStats : MonoBehaviour
     {
         mana = Mathf.Clamp(mana + Mathf.Abs(data.mana), 0, maxMana);
         UpdateStatsEventData statsData = new UpdateStatsEventData(level, hp, maxhp, mana, maxMana, xp, xpPerLevel);
-        EventBusManager.Instance.UpdateStatsEvent.Raise(statsData);
+        GameManager.Instance.UpdateStats(statsData);
     }
     private void RemoveMana(LoseManaEventData data)
     {
+        Debug.Log($"losing {data.mana} mana");
         mana = Mathf.Clamp(mana - Mathf.Abs(data.mana), 0, maxMana);
         UpdateStatsEventData statsData = new UpdateStatsEventData(level, hp, maxhp, mana, maxMana, xp, xpPerLevel);
-        EventBusManager.Instance.UpdateStatsEvent.Raise(statsData);
+        GameManager.Instance.UpdateStats(statsData);
     }
     /// <summary>
     /// Returns whether the player has enough mana for something
@@ -210,7 +215,7 @@ public class PlayerStats : MonoBehaviour
         level++;
 
         UpdateStatsEventData statsData = new UpdateStatsEventData(level, hp, maxhp, mana, maxMana, xp, xpPerLevel);
-        EventBusManager.Instance.UpdateStatsEvent.Raise(statsData);
+        GameManager.Instance.UpdateStats(statsData);
     }
     #endregion
     /// <summary>
@@ -235,6 +240,6 @@ public class PlayerStats : MonoBehaviour
         }
 
         UpdateStatsEventData statsData = new UpdateStatsEventData(level, hp, maxhp, mana, maxMana, xp, xpPerLevel);
-        EventBusManager.Instance.UpdateStatsEvent.Raise(statsData);
+        GameManager.Instance.UpdateStats(statsData);
     }
 }

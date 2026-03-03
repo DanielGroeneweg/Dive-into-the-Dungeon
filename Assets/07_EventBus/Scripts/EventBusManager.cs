@@ -2,7 +2,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "EventBus/EventBus")]
 public class EventBusManager : ScriptableObject
 {
-    static EventBusManager instance;
     [SerializeField] private HealPlayerEvent healPlayerEvent;
     [SerializeField] private DamagePlayerEvent damagePlayerEvent;
     [SerializeField] private EnemyDeathEvent enemyDeathEvent;
@@ -21,12 +20,4 @@ public class EventBusManager : ScriptableObject
     public GetItemEvent GetItemEvent => getItemEvent;
     public EquipWeaponEvent EquipWeaponEvent => equipWeaponEvent;
     public GameOverEvent GameOverEvent => gameOverEvent;
-    public static EventBusManager Instance
-    {
-        get
-        {
-            if (instance == null) instance = Resources.Load<EventBusManager>("EventBus");
-            return instance;
-        }
-    }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class QuestManager : MonoBehaviour
@@ -9,13 +10,18 @@ public class QuestManager : MonoBehaviour
     private List<QuestDisplayer> displayers = new();
     private void OnEnable()
     {
-        EventBusManager.Instance.GetItemEvent.Register(ItemQuestProgress);
-        EventBusManager.Instance.EnemyDeathEvent.Register(EnemyQuestProgress);
+        StartCoroutine(Link());
+    }
+    private IEnumerator Link()
+    {
+        yield return new WaitForEndOfFrame();
+        GameManager.Instance.LinkGetItemEvent(ItemQuestProgress);
+        GameManager.Instance.LinkEnemyDeathEvent(EnemyQuestProgress);
     }
     private void OnDisable()
     {
-        EventBusManager.Instance.GetItemEvent.Unregister(ItemQuestProgress);
-        EventBusManager.Instance.EnemyDeathEvent.Unregister(EnemyQuestProgress);
+        GameManager.Instance.UnlinkGetItemEvent(ItemQuestProgress);
+        GameManager.Instance.UnlinkEnemyDeathEvent(EnemyQuestProgress);
     }
     private void Start()
     {
