@@ -1,6 +1,7 @@
 using UnityEngine;
 public class FlyThroughObjects : MoveBehaviour
 {
+    [SerializeField] private float startHeight;
     protected override void Move()
     {
         // Look at player
@@ -12,5 +13,11 @@ public class FlyThroughObjects : MoveBehaviour
     protected override void StopMoving()
     {
         // No need to do anything here
+    }
+    private void Start()
+    {
+        Vector3 pos = transform.position;
+        pos.y += startHeight;
+        transform.position = pos;
     }
 }

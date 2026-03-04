@@ -1,26 +1,18 @@
-using System.Collections.Generic;
-using Unity.AI.Navigation;
 using UnityEngine;
-using System.Collections.Generic;
-public class EnemySpawner : MonoBehaviour
+
+public class RepeatingSpawner : EnemySpawner
 {
-    [SerializeField] private List<Enemy> enemiesToSpawn = new();
-    [SerializeField] private float spawnRange;
-    [SerializeField] private bool canRespawn;
-    [SerializeField] private int maxEnemyCount;
     [SerializeField] private float enemySpawnInterval;
-    [Range(0f,1f)][SerializeField] private float enemySpawnChance;
-    private int enemyCount;
-    private void Start()
+    [Range(0f, 1f)][SerializeField] private float enemySpawnChance;
+    protected override void Start()
     {
-        if (canRespawn) InvokeRepeating(nameof(Spawn), 0, enemySpawnInterval);
-        else for (int i = 0; i < maxEnemyCount; i++) Spawn();
+        InvokeRepeating(nameof(Spawn), 0, enemySpawnInterval);
     }
-    private void Spawn()
+    protected override void Spawn()
     {
         if (enemyCount >= maxEnemyCount) return;
 
-        else if (Random.Range(0f,1f) >= 1f - enemySpawnChance)
+        else if (Random.Range(0f, 1f) >= 1f - enemySpawnChance)
         {
             // Set position
             Vector3 pos = transform.position;
@@ -35,16 +27,12 @@ public class EnemySpawner : MonoBehaviour
             }
 
             // Select a random enemy type to spawn
-            Enemy enemyToSpawn = enemiesToSpawn[Random.Range(0, enemiesToSpawn.Count - 1)];
+            Enemy enemyToSpawn = enemiesToSpawn[Random.Range(0, enemiesToSpawn.Count)];
 
             // Spawn the selected enemy at the picked location
             Enemy enemy = Instantiate(enemyToSpawn, pos, Quaternion.identity);
             enemy.LinkSpawner(this);
             enemyCount++;
         }
-    }
-    public void RemoveEnemy()
-    {
-        enemyCount--;
     }
 }
