@@ -7,16 +7,22 @@ public class SpellComponentDataBase : ScriptableObject
     private Dictionary<string, SpellComponent> components = new();
     public List<SpellComponent> SpellComponents => spellComponents;
     public Dictionary<string, SpellComponent> Components => components;
-#if UNITY_EDITOR
-    private void OnValidate()
+    private void OnEnable()
+    {
+        BuildDictionary();
+    }
+
+    private void BuildDictionary()
     {
         components.Clear();
 
-        foreach(SpellComponent component in spellComponents)
+        foreach (SpellComponent component in spellComponents)
         {
-            if (component != null! && component.SpellComponentID != null && components.ContainsKey(component.SpellComponentID)) components.Add(component.SpellComponentID, component);
+            if (component == null) continue;
+            if (string.IsNullOrEmpty(component.SpellComponentID)) continue;
+
+            if (!components.ContainsKey(component.SpellComponentID))
+                components.Add(component.SpellComponentID, component);
         }
-        UnityEditor.EditorUtility.SetDirty(this);
     }
-#endif
 }

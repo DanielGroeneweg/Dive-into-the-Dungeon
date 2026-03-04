@@ -44235,7 +44235,7 @@ MonoBehaviour:
   moveSpeed: 15
   maxMoveSpeed: 5
   jumpForce: 5
-  groundedRange: 1
+  groundedRange: 1.1
   mouseSensitivity: 0.1
   rb: {fileID: 2094460744}
   input: {fileID: 2094460736}
@@ -44249,14 +44249,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094460733}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.04, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -72.22, y: 1.04, z: 13.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1403095918}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &2094460736
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,8 +9,11 @@ public class ItemDataBase : ScriptableObject
     private Dictionary<string, Weapon> weaponDic = new();
     public Dictionary<string, Armor> Armors => armorDic;
     public Dictionary<string, Weapon> Weapons => weaponDic;
-#if UNITY_EDITOR
-    private void OnValidate()
+    private void OnEnable()
+    {
+        BuildDictionary();
+    }
+    private void BuildDictionary()
     {
         foreach (Armor armor in armors)
         {
@@ -23,5 +26,4 @@ public class ItemDataBase : ScriptableObject
         }
         UnityEditor.EditorUtility.SetDirty(this);
     }
-#endif
 }

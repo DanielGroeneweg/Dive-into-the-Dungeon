@@ -40,11 +40,13 @@ public class SpellLoaderAndSaver : MonoBehaviour
         string json = JsonUtility.ToJson(savedata);
         File.WriteAllText(path, json);
     }
-    public void LoadSpells()
+    private IEnumerator LoadSpells()
     {
+        yield return new WaitForEndOfFrame();
+
         // Load from JSON
         string path = Application.persistentDataPath + "/Spells.json";
-        if (!File.Exists(path)) return;
+        if (!File.Exists(path)) yield break;
 
         string json = File.ReadAllText(path);
         SpellSaveData savedata = JsonUtility.FromJson<SpellSaveData>(json);
@@ -81,7 +83,7 @@ public class SpellLoaderAndSaver : MonoBehaviour
     }
     private void OnEnable()
     {
-        LoadSpells();
+        StartCoroutine(LoadSpells());
         StartCoroutine(Link());
     }
     private IEnumerator Link()

@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(float amount)
     {
         current -= amount;
-        Debug.Log($"{gameObject.name} HP: {current}");
+        Debug.Log($"{gameObject.name} HP: {current} after taking {amount} damage");
 
         healthChanged.Invoke(0, maxHealth, current);
 
