@@ -10,9 +10,11 @@ public class SpellComponentDataBase : ScriptableObject
 #if UNITY_EDITOR
     private void OnValidate()
     {
+        components.Clear();
+
         foreach(SpellComponent component in spellComponents)
         {
-            if (!components.ContainsKey(component.SpellComponentID) && component != null) components.Add(component.SpellComponentID, component);
+            if (component != null! && component.SpellComponentID != null && components.ContainsKey(component.SpellComponentID)) components.Add(component.SpellComponentID, component);
         }
         UnityEditor.EditorUtility.SetDirty(this);
     }
