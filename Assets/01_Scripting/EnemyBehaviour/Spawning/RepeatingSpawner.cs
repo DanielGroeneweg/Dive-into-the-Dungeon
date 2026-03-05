@@ -41,10 +41,17 @@ public class RepeatingSpawner : EnemySpawner
 
             // Spawn the selected enemy at the picked location
             Enemy enemy = Instantiate(enemyToSpawn, pos, Quaternion.identity);
+
+            // Rotation
+            Vector3 rot = enemy.transform.localEulerAngles;
+            rot.y += Random.Range(0, 360);
+            enemy.transform.localEulerAngles = rot;
+
+            // Setup
             enemy.LinkSpawner(this);
             enemyCount++;
 
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             enemiesSpawned.Add(enemy);
             #endif
         }

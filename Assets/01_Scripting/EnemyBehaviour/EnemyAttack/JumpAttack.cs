@@ -8,6 +8,7 @@ public class JumpAttack : Attack
     [SerializeField] private float chargeTime;
     [SerializeField] private float slamTime;
     [SerializeField] private float slamRadius;
+    [SerializeField] private Rigidbody rb;
     public override void DoAttack()
     {
         animator.SetFloat("MoveSpeed", 0);
@@ -15,6 +16,7 @@ public class JumpAttack : Attack
     }
     private IEnumerator Jump()
     {
+        rb.isKinematic = true;
         Vector3 startPos = transform.position;
         while (transform.position.y < startPos.y + jumpHeight)
         {
@@ -76,7 +78,7 @@ public class JumpAttack : Attack
             {
                 yield return null;
                 Vector3 pos = transform.position;
-                pos.y += (jumpHeight / slamTime) * Time.deltaTime;
+                pos.y -= (jumpHeight / slamTime) * Time.deltaTime;
                 transform.position = pos;
             }
         }
@@ -92,6 +94,9 @@ public class JumpAttack : Attack
     }
     private void EndAttack()
     {
+        rb.isKinematic = false;
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         AttackEndAction.Invoke();
     }
 }

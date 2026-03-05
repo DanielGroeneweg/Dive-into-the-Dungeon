@@ -603,6 +603,7 @@ MonoBehaviour:
   - {fileID: 2053136801656463924, guid: 5574b181907b2044bb45a7e795308550, type: 3}
   spawnRange: 15
   maxEnemyCount: 4
+  debugging: 0
   enemySpawnInterval: 10
   enemySpawnChance: 0.35
 --- !u!1 &35132888
@@ -15644,6 +15645,7 @@ MonoBehaviour:
   - {fileID: 2053136801656463924, guid: 5574b181907b2044bb45a7e795308550, type: 3}
   spawnRange: 15
   maxEnemyCount: 20
+  debugging: 0
   enemySpawnInterval: 4
   enemySpawnChance: 0.3
 --- !u!1 &729318091
@@ -18584,6 +18586,7 @@ MonoBehaviour:
   - {fileID: 2053136801656463924, guid: 5574b181907b2044bb45a7e795308550, type: 3}
   spawnRange: 15
   maxEnemyCount: 7
+  debugging: 0
 --- !u!1 &860908297
 GameObject:
   m_ObjectHideFlags: 0
@@ -26798,6 +26801,7 @@ MonoBehaviour:
   - {fileID: 3811841516666918769, guid: 76ac0cec2ae98254e86e1d624891d79f, type: 3}
   spawnRange: 0
   maxEnemyCount: 1
+  debugging: 0
   enemySpawnInterval: 60
   enemySpawnChance: 1
 --- !u!1 &1294401893
@@ -32545,6 +32549,7 @@ MonoBehaviour:
   - {fileID: 1185050533433919292, guid: 45c532121a2cff44482a280b83429a91, type: 3}
   spawnRange: 15
   maxEnemyCount: 6
+  debugging: 0
   enemySpawnInterval: 8
   enemySpawnChance: 0.3
 --- !u!1 &1550578500
@@ -33443,7 +33448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1601338078}
   m_Layer: 0
-  m_Name: SINGLE
+  m_Name: SINGLEBURST
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
