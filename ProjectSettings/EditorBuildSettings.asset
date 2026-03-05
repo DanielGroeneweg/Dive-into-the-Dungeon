@@ -11,6 +11,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/04_Scenes/GameScene.unity
     guid: 8494ddda722d65d4482ab53af93592d9
+  - enabled: 1
+    path: Assets/10_UnitTests/InventoryAndSpellCasting/InvAndSpellTest.unity
+    guid: b6dd8ec79f23b5146b0d6d49f85473af
+  - enabled: 1
+    path: Assets/10_UnitTests/EnemyAITest/EnemyAITest.unity
+    guid: fc8893fa538552145ba0419efc900d48
+  - enabled: 1
+    path: Assets/10_UnitTests/CombatTest/CombatTest.unity
+    guid: c270be9e033c37540a5b5b37be52af1c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 0a7073a35a96869408538adaf99575ef, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

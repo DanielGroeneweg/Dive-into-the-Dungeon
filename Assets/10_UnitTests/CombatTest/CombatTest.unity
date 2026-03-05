@@ -9542,7 +9542,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: GameScene
+          m_StringArgument: CombatTest
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &989715173
@@ -20551,6 +20551,7 @@ MonoBehaviour:
   hpRegenIncrease: 0.5
   manaIncrease: 25
   manaRegenIncrease: 0.5
+  debugging: 0
 --- !u!54 &2094460744
 Rigidbody:
   m_ObjectHideFlags: 0
