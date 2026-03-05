@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using NaughtyAttributes;
 public class PlayerStats : MonoBehaviour
 {
     [Header("Player Stats")]
@@ -242,4 +243,14 @@ public class PlayerStats : MonoBehaviour
         UpdateStatsEventData statsData = new UpdateStatsEventData(level, hp, maxhp, mana, maxMana, xp, xpPerLevel);
         GameManager.Instance.UpdateStats(statsData);
     }
+#if UNITY_EDITOR
+    [SerializeField] private bool debugging;
+    [Button("Cheat Level Up", EButtonEnableMode.Playmode)]
+    private void CheatLevel()
+    {
+        if (!debugging) return;
+        EnemyDeathEventData data = new EnemyDeathEventData(EnemyTypes.None, xpPerLevel - xp);
+        GameManager.Instance.EnemyDeath(data);
+    }
+#endif
 }
