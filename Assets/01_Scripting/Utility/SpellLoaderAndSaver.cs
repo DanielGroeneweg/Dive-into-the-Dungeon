@@ -72,7 +72,12 @@ public class SpellLoaderAndSaver : MonoBehaviour
                 }
 
                 // Find component
-                SpellComponent component = dataBase.Components[idList[componentIndex]];
+                if (!dataBase.Components.TryGetValue(idList[componentIndex], out SpellComponent component))
+                {
+                    Debug.LogWarning($"SpellComponent ID not found: {idList[componentIndex]}");
+                    spell.components[componentIndex] = null;
+                    continue;
+                }
 
                 // Set Spell Component to found component
                 if (component is SpellEffect effect) spell.components[componentIndex] = effect;

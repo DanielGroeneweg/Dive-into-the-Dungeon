@@ -5,6 +5,7 @@ public abstract class EnemySpawner : MonoBehaviour
     [SerializeField] protected List<Enemy> enemiesToSpawn = new();
     [SerializeField] protected float spawnRange;
     [SerializeField] protected int maxEnemyCount;
+    [SerializeField] protected bool debugging;
     
     protected int enemyCount;
     protected virtual void Start() { }

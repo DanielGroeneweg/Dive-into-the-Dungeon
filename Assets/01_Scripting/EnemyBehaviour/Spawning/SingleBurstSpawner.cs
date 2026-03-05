@@ -1,9 +1,17 @@
 using UnityEngine;
-
+using NaughtyAttributes;
+using System.Collections.Generic;
 public class SingleBurstSpawner : EnemySpawner
 {
+#if UNITY_EDITOR
+    private List<Enemy> enemiesSpawned = new();
+#endif
     protected override void Start()
     {
+        #if UNITY_EDITOR
+        if (debugging) return;
+        #endif
+
         for (int i = 0; i < maxEnemyCount; i++) Spawn();
     }
     protected override void Spawn()
@@ -27,5 +35,29 @@ public class SingleBurstSpawner : EnemySpawner
         Enemy enemy = Instantiate(enemyToSpawn, pos, Quaternion.identity);
         enemy.LinkSpawner(this);
         enemyCount++;
+
+        #if UNITY_EDITOR
+        enemiesSpawned.Add(enemy);
+        #endif
     }
+#if UNITY_EDITOR
+    [Button("Spawn", EButtonEnableMode.Playmode)]
+    private void DebugSpawn()
+    {
+        if (!debugging) return;
+        for (int i = 0; i < maxEnemyCount; i++) Spawn();
+    }
+
+    [Button("DeleteEnemies", EButtonEnableMode.Playmode)]
+    private void DebugDelete()
+    {
+        if (!debugging) return;
+        for (int i = enemiesSpawned.Count - 1; i >= 0; i--)
+        {
+            Enemy enemy = enemiesSpawned[i];
+            enemiesSpawned.RemoveAt(i);
+            Destroy(enemy.gameObject);
+        }
+    }
+#endif
 }
