@@ -517,6 +517,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &2596622513258337441
 MonoBehaviour:
@@ -1628,6 +1629,7 @@ SkinnedMeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -2041,6 +2043,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &1881274707705506145
 MonoBehaviour:
@@ -2221,6 +2224,7 @@ SkinnedMeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -2925,6 +2929,7 @@ SkinnedMeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -3168,6 +3173,7 @@ SkinnedMeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -3339,8 +3345,8 @@ GameObject:
   m_Component:
   - component: {fileID: 913792660781812112}
   - component: {fileID: 3811841516666918769}
+  - component: {fileID: -7780217226579385121}
   - component: {fileID: 4837897990921216447}
-  - component: {fileID: 3087629437708383391}
   - component: {fileID: 6902185390900758172}
   - component: {fileID: 5695699272729584765}
   - component: {fileID: 3371638234230155135}
@@ -3349,6 +3355,7 @@ GameObject:
   - component: {fileID: 8945747087263944686}
   - component: {fileID: 7492237791319523572}
   - component: {fileID: 5937802185079732498}
+  - component: {fileID: 1286803242351703124}
   m_Layer: 0
   m_Name: dragon
   m_TagString: Untagged
@@ -3396,6 +3403,27 @@ MonoBehaviour:
     dropChance: 1
   enemyType: 1
   xpOnDeath: 1000
+--- !u!114 &-7780217226579385121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5734063526815357735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab61fcd5e19dc214e91508f0aae54215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossController
+  bossStates:
+  - healthPercentageThreshold: 1
+    MoveBehaviour: {fileID: 6902185390900758172}
+    AttackBehaviour: {fileID: 1286803242351703124}
+  - healthPercentageThreshold: 0.5
+    MoveBehaviour: {fileID: 6902185390900758172}
+    AttackBehaviour: {fileID: 5695699272729584765}
+  health: {fileID: 4837897990921216447}
+  editing: 0
 --- !u!114 &4837897990921216447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3436,20 +3464,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3087629437708383391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5734063526815357735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dd6f0750dd176a489b11674faef43ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
-  moveBehaviour: {fileID: 6902185390900758172}
-  attackBehaviour: {fileID: 5695699272729584765}
 --- !u!114 &6902185390900758172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3479,6 +3493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b87bec4e7c80f4da9ae72312376703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackBehaviour
+  attackBehaviourName: 
   attacks:
   - {fileID: 1469331182214136576}
   - {fileID: 1469331182214136576}
@@ -3566,6 +3581,7 @@ MonoBehaviour:
   chargeTime: 2
   slamTime: 1
   slamRadius: 7.5
+  rb: {fileID: 0}
 --- !u!65 &7492237791319523572
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3614,6 +3630,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1286803242351703124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5734063526815357735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b87bec4e7c80f4da9ae72312376703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttackBehaviour
+  attackBehaviourName: InitalAttackPattern
+  attacks:
+  - {fileID: 1469331182214136576}
 --- !u!1 &6006393713082773137
 GameObject:
   m_ObjectHideFlags: 0
