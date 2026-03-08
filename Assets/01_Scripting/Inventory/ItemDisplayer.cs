@@ -14,4 +14,8 @@ public class ItemDisplayer : MonoBehaviour
     {
         icon.sprite = item.Icon;
     }
+    public void HoverItem()
+    {
+        InventoryUIManager.ItemEvent.Invoke(item);
+    }
 }

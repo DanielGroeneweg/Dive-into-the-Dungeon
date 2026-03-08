@@ -18,6 +18,7 @@ public class CraftManager : MonoBehaviour
     [SerializeField] private SpellSlot selected;
     [SerializeField] private TMP_Text componentNameLabel;
     [SerializeField] private TMP_Text componentDescription;
+    [SerializeField] private TextPresenter manaCostPresenter;
     [Serializable] private class PlaceHolderSpell
     {
         public SpellComponent[] components = new SpellComponent[10];
@@ -124,6 +125,8 @@ public class CraftManager : MonoBehaviour
         selectedComponentIndex = 0;
 
         DisableDisallowedComponents();
+
+        SetCostValue();
     }
     /// <summary>
     /// Sets the given spell as the spell being edited
@@ -160,6 +163,8 @@ public class CraftManager : MonoBehaviour
 
         DisableDisallowedComponents();
 
+        SetCostValue();
+
         componentNameLabel.text = string.Empty;
         componentDescription.text = string.Empty;
     }
@@ -178,6 +183,8 @@ public class CraftManager : MonoBehaviour
         selectedComponentIndex++;
 
         DisableDisallowedComponents();
+
+        SetCostValue();
     }
     /// <summary>
     /// Removes a SpellComponent at the given index
@@ -201,6 +208,8 @@ public class CraftManager : MonoBehaviour
         FindComponentSlot();
 
         DisableDisallowedComponents();
+
+        SetCostValue();
     }
     /// <summary>
     /// Displays the name of the spell in the name input section
@@ -209,6 +218,12 @@ public class CraftManager : MonoBehaviour
     public void DisplayName(string spellName)
     {
         nameInput.text = spellName;
+    }
+    private void SetCostValue()
+    {
+        float cost = 0;
+        foreach (SpellComponent component in placeHolderSpell.components) if (component != null) cost += component.ManaCost;
+        manaCostPresenter.SetValue(0,0,cost);
     }
     /// <summary>
     /// Sets the name of the spell

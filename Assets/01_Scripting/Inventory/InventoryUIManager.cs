@@ -1,19 +1,31 @@
 using UnityEngine.UI;
 using UnityEngine;
 using System.Collections.Generic;
+using System;
+using TMPro;
 /// <summary>
 /// Handles equipping and unequipping items in the inventory UI menu
 /// </summary>
 public class InventoryUIManager : MonoBehaviour
 {
+    [Header("Equipped Items")]
     [SerializeField] private Image headButton;
     [SerializeField] private Image chestButton;
     [SerializeField] private Image legButton;
     [SerializeField] private Image footButton;
     [SerializeField] private Image weaponButton;
 
+    [Header("References")]
     [SerializeField] private Inventory inventory;
     [SerializeField] private PlayerStats playerStats;
+
+    [Header("Item Info Display")]
+    [SerializeField] private Transform itemStatsObject;
+    [SerializeField] private TMP_Text itemNameLabel;
+    [SerializeField] private Transform statParent;
+    [SerializeField] private TMP_Text statPrefab;
+
+    public static Action<Item> ItemEvent;
     #region Equip
     public void EquipItem(Item item)
     {
@@ -45,22 +57,22 @@ public class InventoryUIManager : MonoBehaviour
     {
         switch (armor.ArmorType)
         {
-            case ArmorTypes.Head:
+            case ArmorTypes.Helmet:
                 inventory.equippedItems.head = armor;
                 headButton.sprite = armor.Icon;
                 break;
 
-            case ArmorTypes.Chest:
+            case ArmorTypes.Chestplate:
                 inventory.equippedItems.chest = armor;
                 chestButton.sprite = armor.Icon;
                 break;
 
-            case ArmorTypes.Leg:
+            case ArmorTypes.Leggings:
                 inventory.equippedItems.legs = armor;
                 legButton.sprite = armor.Icon;
                 break;
 
-            case ArmorTypes.Foot:
+            case ArmorTypes.Footwear:
                 inventory.equippedItems.feet = armor;
                 footButton.sprite = armor.Icon;
                 break;
@@ -106,6 +118,40 @@ public class InventoryUIManager : MonoBehaviour
         UpdatePlayerStats();
     }
     #endregion
+
+    private void UpdateItemInfoDisplay(Item item)
+    {
+        if (!itemStatsObject.gameObject.activeSelf) itemStatsObject.gameObject.SetActive(true);
+
+        // Clear bonus stats
+        for (int i = statParent.childCount - 1; i >= 0; i--)
+        {
+            Destroy(statParent.GetChild(i).gameObject);
+        }
+
+        // Set name
+        itemNameLabel.text = item.Name;
+
+        TMP_Text type = Instantiate(statPrefab, Vector3.zero, Quaternion.identity, statParent);
+        type.text = "Type: ";
+        type.text += item is Armor armor ? armor.ArmorType : "Weapon";
+
+        if (item is Weapon weapon)
+        {
+            TMP_Text damage = Instantiate(statPrefab, Vector3.zero, Quaternion.identity, statParent);
+            damage.text = $"Damage: {weapon.Damage}";
+
+            TMP_Text attackSpeed = Instantiate(statPrefab, Vector3.zero, Quaternion.identity, statParent);
+            attackSpeed.text = $"Attack Speed: {weapon.AttackSpeed}";
+        }
+
+        foreach (StatBonus bonus in item.StatBonusses)
+        {
+            TMP_Text bonusStat = Instantiate(statPrefab, Vector3.zero, Quaternion.identity, statParent);
+            bonusStat.text = $"{bonus.stat}: +{bonus.bonus}";
+        }
+    }
+
     /// <summary>
     /// Updates the players health, mana, etc. upon equipping or unequipping items
     /// </summary>
@@ -131,6 +177,8 @@ public class InventoryUIManager : MonoBehaviour
     }
     private void OnEnable()
     {
+        ItemEvent += UpdateItemInfoDisplay;
+
         Cursor.lockState = CursorLockMode.None;
 
         if (inventory.equippedItems.head != null) headButton.sprite = inventory.equippedItems.head.Icon;
@@ -141,6 +189,7 @@ public class InventoryUIManager : MonoBehaviour
     }
     private void OnDisable()
     {
+        ItemEvent -= UpdateItemInfoDisplay;
         Cursor.lockState = CursorLockMode.Locked;
     }
 }
