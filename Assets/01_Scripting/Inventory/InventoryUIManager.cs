@@ -118,7 +118,10 @@ public class InventoryUIManager : MonoBehaviour
         UpdatePlayerStats();
     }
     #endregion
-
+    /// <summary>
+    /// Displays the stats of an item being hovered over in the inventory
+    /// </summary>
+    /// <param name="item"></param>
     private void UpdateItemInfoDisplay(Item item)
     {
         if (!itemStatsObject.gameObject.activeSelf) itemStatsObject.gameObject.SetActive(true);

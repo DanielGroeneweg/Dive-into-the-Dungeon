@@ -25,8 +25,8 @@ public class InventoryManager : MonoBehaviour
     }
     private void AddItem(GetItemEventData data)
     {
-        if (data.Item is Potion potion) inventory.AddPotion(potion);
-        else inventory.AddItem(data.Item);
+        if (data.item is Potion potion) inventory.AddPotion(potion);
+        else inventory.AddItem(data.item);
     }
     private IEnumerator Start()
     {

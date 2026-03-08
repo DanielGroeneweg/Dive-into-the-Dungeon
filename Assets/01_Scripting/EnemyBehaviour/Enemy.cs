@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyTypes enemyType;
     [SerializeField] private float xpOnDeath;
     private EnemySpawner spawner;
-    public void Killenemy()
+    public void KillEnemy()
     {
         EnemyDeathEventData data = new EnemyDeathEventData(enemyType, xpOnDeath);
         GameManager.Instance.EnemyDeath(data);

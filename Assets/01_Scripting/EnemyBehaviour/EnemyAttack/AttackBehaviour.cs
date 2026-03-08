@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class AttackBehaviour : MonoBehaviour
 {
-    [SerializeField] private string attackBehaviourName;
     [SerializeField] private List<Attack> attacks = new();
     private bool canAttack;
     public bool CanAttack => canAttack;

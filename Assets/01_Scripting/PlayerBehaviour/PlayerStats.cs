@@ -198,7 +198,7 @@ public class PlayerStats : MonoBehaviour
     #region XP
     private void GainXP(EnemyDeathEventData data)
     {
-        xp += MathF.Abs(data.XPToGain);
+        xp += MathF.Abs(data.xpToGain);
 
         while (xp >= xpPerLevel && level < maxLevel) LevelUp();
     }

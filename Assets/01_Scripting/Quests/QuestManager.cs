@@ -45,7 +45,7 @@ public class QuestManager : MonoBehaviour
     {
         foreach(ObtainItemQuest quest in itemQuests)
         {
-            if (quest.ItemNeeded == data.Item) quest.ProgressQuest();
+            if (quest.ItemNeeded == data.item) quest.ProgressQuest();
         }
 
         DisplayQuests();
@@ -54,7 +54,7 @@ public class QuestManager : MonoBehaviour
     {
         foreach (DefeatEnemyQuest quest in enemyQuests)
         {
-            if (quest.EnemyType == data.EnemyType) quest.ProgressQuest();
+            if (quest.EnemyType == data.enemyType) quest.ProgressQuest();
         }
 
         DisplayQuests();

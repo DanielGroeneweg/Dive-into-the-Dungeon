@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class GameEvent<T> : ScriptableObject
     where T : GameEventData
 {
-    public event Action<T> _Event;
+    private event Action<T> _Event;
     public void Raise(T data)
     {
         _Event?.Invoke(data);

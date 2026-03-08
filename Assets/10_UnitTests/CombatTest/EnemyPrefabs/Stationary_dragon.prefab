@@ -3415,7 +3415,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3811841516666918769}
         m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-        m_MethodName: Killenemy
+        m_MethodName: KillEnemy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
