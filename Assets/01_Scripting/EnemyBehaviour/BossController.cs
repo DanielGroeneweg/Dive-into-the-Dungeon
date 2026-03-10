@@ -45,6 +45,8 @@ public class BossController : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(Link());
+        attackBehaviour = bossStages[0].AttackBehaviour;
+        moveBehaviour = bossStages[0].MoveBehaviour;
     }
     private IEnumerator Link()
     {

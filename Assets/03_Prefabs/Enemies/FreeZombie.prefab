@@ -365,6 +365,7 @@ SkinnedMeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -692,7 +693,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2053136801656463924}
         m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-        m_MethodName: Killenemy
+        m_MethodName: KillEnemy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

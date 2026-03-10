@@ -61,16 +61,26 @@ public class QuestManager : MonoBehaviour
     }
     private void DisplayQuests()
     {
+        List<QuestReward> rewardsToGrant = new List<QuestReward>();
+
         for (int i = displayers.Count - 1; i >= 0; i--)
         {
             QuestDisplayer displayer = displayers[i];
             displayer.DisplayQuestProgress();
             if (displayer.quest.Progress >= displayer.quest.AmountNeeded)
             {
-                displayer.quest.Reward.InvokeReward();
+                rewardsToGrant.Add(displayer.quest.Reward);
                 displayers.Remove(displayer);
                 Destroy(displayer.gameObject);
             }
         }
+
+        if (rewardsToGrant.Count > 0) StartCoroutine(DelayedReward(rewardsToGrant));
+    }
+    private IEnumerator DelayedReward(List<QuestReward> rewards)
+    {
+        yield return null;
+
+        foreach (QuestReward reward in rewards) reward.InvokeReward();
     }
 }

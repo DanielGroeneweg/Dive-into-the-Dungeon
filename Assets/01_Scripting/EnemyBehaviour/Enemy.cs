@@ -15,7 +15,11 @@ public class Enemy : MonoBehaviour
         {
             if (Random.Range(0f,0.99f) >= 1 - itemDrop.dropChance)
             {
-                if (itemDrop.item != null) GameManager.Instance.GetItem(new GetItemEventData(itemDrop.item));
+                if (itemDrop.item != null)
+                {
+                    Debug.Log($"dropping {itemDrop.item}");
+                    GameManager.Instance.GetItem(new GetItemEventData(itemDrop.item));
+                }
             }
         }
     }
